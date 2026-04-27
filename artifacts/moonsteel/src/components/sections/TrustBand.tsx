@@ -11,26 +11,26 @@ export function TrustBand() {
     <section className="py-16 bg-background border-b border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 border-b border-border/50 pb-16">
-          <div>
-            <p className="text-4xl md:text-5xl font-display font-bold text-foreground mb-2">15+</p>
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Years Experience</p>
+          <div className="flex flex-col items-center justify-start min-h-[88px] text-center">
+            <p className="text-4xl md:text-5xl font-display font-semibold text-foreground leading-none">15+</p>
+            <p className="text-sm font-medium text-muted-foreground mt-3">Years Experience</p>
           </div>
-          <div>
-            <p className="text-4xl md:text-5xl font-display font-bold text-foreground mb-2">850+</p>
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Projects Delivered</p>
+          <div className="flex flex-col items-center justify-start min-h-[88px] text-center">
+            <p className="text-4xl md:text-5xl font-display font-semibold text-foreground leading-none">850+</p>
+            <p className="text-sm font-medium text-muted-foreground mt-3">Projects Delivered</p>
           </div>
-          <div>
-            <p className="text-4xl md:text-5xl font-display font-bold text-foreground mb-2">100%</p>
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Certified SS 304</p>
+          <div className="flex flex-col items-center justify-start min-h-[88px] text-center">
+            <p className="text-4xl md:text-5xl font-display font-semibold text-foreground leading-none">100%</p>
+            <p className="text-sm font-medium text-muted-foreground mt-3">Certified SS 304</p>
           </div>
-          <div>
-            <p className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">0</p>
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Compromises</p>
+          <div className="flex flex-col items-center justify-start min-h-[88px] text-center">
+            <p className="text-4xl md:text-5xl font-display font-semibold text-primary leading-none">0</p>
+            <p className="text-sm font-medium text-muted-foreground mt-3">Compromises</p>
           </div>
         </div>
 
         <div className="text-center mb-10">
-          <p className="text-sm font-display font-bold uppercase tracking-widest text-muted-foreground">
+          <p className="apple-eyebrow">
             Trusted by Industry Leaders
           </p>
         </div>
@@ -43,7 +43,7 @@ export function TrustBand() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="text-lg md:text-xl font-display font-bold text-muted-foreground"
+              className="text-lg md:text-xl font-display font-semibold text-muted-foreground"
             >
               {client}
             </motion.div>

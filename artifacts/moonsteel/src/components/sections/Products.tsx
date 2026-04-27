@@ -45,10 +45,10 @@ export function Products() {
     <section id="products" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+          <h2 className="apple-section-title mb-6 section-title-accent">
             Engineered Products.
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <p className="apple-section-copy max-w-2xl">
             We don't build generic equipment. Every item is fabricated to exact specifications, ensuring hygiene, durability, and operational flow.
           </p>
         </div>
@@ -61,13 +61,13 @@ export function Products() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group border border-border p-6 bg-card rounded-md hover:border-primary/50 hover:shadow-sm transition-all"
+              className="group apple-surface p-6 hover:border-primary/40 transition-colors"
             >
               <div className="mb-6 pb-6 border-b border-border">
-                <h3 className="text-xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>
-                <div className="text-xs font-mono text-muted-foreground bg-muted/50 inline-block px-2 py-1 rounded-sm">
+                <div className="text-xs font-mono text-muted-foreground bg-muted/50 inline-block px-2 py-1 rounded-md">
                   {product.specs}
                 </div>
               </div>
@@ -75,7 +75,7 @@ export function Products() {
                 {product.desc}
               </p>
               <div className="flex items-center justify-between mt-auto">
-                <span className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                <span className="text-xs font-medium text-foreground">
                   {product.uses}
                 </span>
                 <ChevronRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" />

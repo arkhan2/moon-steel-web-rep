@@ -39,10 +39,10 @@ export function Industries() {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+          <h2 className="apple-section-title mb-6 section-title-accent">
             Industries We Serve.
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <p className="apple-section-copy max-w-2xl">
             Specialized stainless steel fabrication tailored to the rigorous demands of distinct sectors.
           </p>
         </div>
@@ -57,13 +57,13 @@ export function Industries() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-6 border border-border bg-card rounded-md hover:border-accent-warm/50 hover:shadow-sm transition-all"
+                className="flex items-start gap-4 p-6 border border-border bg-card rounded-xl hover:border-primary/40 hover:shadow-sm transition-colors"
               >
-                <div className="w-12 h-12 bg-accent-warm/10 rounded-md flex items-center justify-center shrink-0">
-                  <Icon className="w-6 h-6 text-accent-warm" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-display font-bold text-foreground mb-1">
+                  <h3 className="text-lg font-display font-semibold text-foreground mb-1">
                     {industry.name}
                   </h3>
                   <p className="text-sm text-muted-foreground">

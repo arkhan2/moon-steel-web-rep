@@ -48,10 +48,10 @@ export function Projects() {
     <section id="projects" className="py-24 bg-card border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+          <h2 className="apple-section-title mb-6 section-title-accent">
             Proven Installations.
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="apple-section-copy">
             Our fabrication speaks for itself. Explore recent high-performance stainless steel installations across various rigorous environments.
           </p>
         </div>
@@ -66,7 +66,7 @@ export function Projects() {
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-muted mb-4 border border-border relative rounded-md">
+              <div className="aspect-[4/3] overflow-hidden bg-muted mb-4 border border-border relative rounded-xl">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -75,7 +75,7 @@ export function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <h3 className="text-lg font-display font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-display font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
               <p className="text-sm text-muted-foreground">

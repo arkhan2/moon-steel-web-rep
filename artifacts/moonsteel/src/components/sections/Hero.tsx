@@ -24,7 +24,7 @@ export function Hero() {
             className="flex items-center gap-4 mb-6"
           >
             <div className="h-px w-12 bg-primary"></div>
-            <span className="text-primary font-display font-bold tracking-widest text-sm uppercase">
+            <span className="apple-eyebrow text-primary">
               Engineering Grade Fabrication
             </span>
           </motion.div>
@@ -33,17 +33,17 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display font-bold text-foreground leading-[1.1] tracking-tight mb-6"
+            className="text-5xl md:text-7xl font-display font-semibold text-foreground leading-[1.1] tracking-tight mb-6"
           >
             Precision Stainless Steel <br className="hidden md:block" />
-            For Kitchens That <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Actually Last.</span>
+            For Kitchens That <span className="text-primary">Actually Last.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed"
+            className="apple-section-copy max-w-2xl mb-10"
           >
             Certified SS 304. Accurate gauges. Flawless TIG welding. We build commercial kitchen equipment, hospital sterile prep stations, and industrial solutions designed to endure 15+ years of severe use. No compromises.
           </motion.p>
@@ -52,10 +52,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-highlight/15 border border-highlight/40 rounded-sm"
+            className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-primary/10 border border-primary/25 rounded-md"
           >
-            <Zap className="w-3.5 h-3.5 text-highlight" strokeWidth={2.5} />
-            <span className="text-highlight font-semibold tracking-wide text-xs uppercase">
+            <Zap className="w-3.5 h-3.5 text-primary" strokeWidth={2.5} />
+            <span className="text-primary font-medium text-xs uppercase tracking-[0.06em]">
               Quote Returned in 24 Hours
             </span>
           </motion.div>
@@ -68,7 +68,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold tracking-wide text-base h-14 px-8 group"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium group"
               onClick={() => {
                 document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
@@ -79,7 +79,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-foreground/20 text-foreground hover:bg-foreground/5 font-semibold tracking-wide text-base h-14 px-8 group"
+              className="border-foreground/20 text-foreground hover:bg-foreground/5 font-medium group"
               onClick={() => {
                 document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
@@ -92,7 +92,7 @@ export function Hero() {
       </div>
 
       {/* Industrial accent detail */}
-      <div className="absolute bottom-0 right-0 w-64 h-64 border-t border-l border-foreground/5 rounded-tl-full opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 border-t border-l border-foreground/10 rounded-tl-full opacity-60 pointer-events-none" />
     </section>
   );
 }

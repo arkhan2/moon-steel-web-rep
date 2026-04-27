@@ -32,69 +32,76 @@ const comparisons = [
     moon: "10–15+ years",
     others: "2–4 years",
   },
-  {
-    feature: "Hygiene Compliance",
-    moon: "HACCP-ready",
-    others: "Fails health inspection",
-  },
 ];
 
 export function Comparison() {
   return (
-    <section id="comparison" className="py-24 bg-background text-foreground relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-70" />
-      
+    <section id="comparison" className="py-24 bg-background text-foreground">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+          <h2 className="apple-section-title mb-6">
             The Moon Steel Difference.
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Don't risk your operation on subpar materials. Here's exactly how our fabrication compares to standard market offerings.
+          <p className="apple-section-copy">
+            A clear side-by-side specification view so you can see exactly what
+            you get.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 rounded-lg overflow-hidden border border-border shadow-md bg-card">
-            {/* Headers */}
-            <div className="hidden md:flex bg-muted p-6 items-center border-b border-border">
-              <span className="font-display font-bold text-muted-foreground uppercase tracking-wider text-sm">Specification</span>
-            </div>
-            <div className="bg-primary p-6 items-center border-b border-border md:border-l md:border-border">
-              <span className="font-display font-bold text-primary-foreground uppercase tracking-wider text-sm">Moon Steel Standard</span>
-            </div>
-            <div className="bg-muted p-6 items-center border-b border-border md:border-l md:border-border">
-              <span className="font-display font-bold text-muted-foreground uppercase tracking-wider text-sm">Typical Workshop</span>
+          <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+            <div className="hidden md:grid md:grid-cols-12 border-b border-border bg-muted/60">
+              <div className="col-span-4 p-5">
+                <span className="text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                  Specification
+                </span>
+              </div>
+              <div className="col-span-4 p-5 border-l border-border bg-primary/5">
+                <span className="text-xs font-medium uppercase tracking-[0.06em] text-primary">
+                  Moon Steel Standard
+                </span>
+              </div>
+              <div className="col-span-4 p-5 border-l border-border">
+                <span className="text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                  Typical Workshop
+                </span>
+              </div>
             </div>
 
-            {/* Rows */}
             {comparisons.map((row, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <motion.div
+                key={row.feature}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="contents md:grid md:grid-cols-3"
+                transition={{ delay: i * 0.04 }}
+                className="grid grid-cols-1 md:grid-cols-12 border-t first:border-t-0 border-border"
               >
-                {/* Mobile Feature Label */}
-                <div className="md:hidden bg-muted p-4 border-t border-border flex items-center justify-center">
-                   <span className="font-display font-bold text-foreground text-sm">{row.feature}</span>
-                </div>
-                
-                {/* Desktop Feature Label */}
-                <div className="hidden md:flex bg-muted/60 p-6 border-t border-border items-center">
-                  <span className="font-semibold text-foreground">{row.feature}</span>
+                <div className="md:col-span-4 p-5 bg-muted/30">
+                  <p className="text-xs uppercase tracking-[0.06em] text-muted-foreground mb-1 md:hidden">
+                    Specification
+                  </p>
+                  <p className="font-semibold text-foreground">{row.feature}</p>
                 </div>
 
-                <div className="bg-primary/5 p-6 border-t border-border md:border-l md:border-border flex items-center gap-3">
-                  <Check className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-foreground font-medium">{row.moon}</span>
+                <div className="md:col-span-4 p-5 border-t md:border-t-0 md:border-l border-border bg-primary/5">
+                  <p className="text-xs uppercase tracking-[0.06em] text-primary mb-2 md:hidden">
+                    Moon Steel Standard
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-primary shrink-0" />
+                    <span className="font-medium text-foreground">{row.moon}</span>
+                  </div>
                 </div>
 
-                <div className="bg-card p-6 border-t border-border md:border-l md:border-border flex items-center gap-3">
-                  <X className="w-5 h-5 text-destructive shrink-0" />
-                  <span className="text-muted-foreground">{row.others}</span>
+                <div className="md:col-span-4 p-5 border-t md:border-t-0 md:border-l border-border">
+                  <p className="text-xs uppercase tracking-[0.06em] text-muted-foreground mb-2 md:hidden">
+                    Typical Workshop
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <X className="w-4 h-4 text-destructive shrink-0" />
+                    <span className="text-destructive/85">{row.others}</span>
+                  </div>
                 </div>
               </motion.div>
             ))}

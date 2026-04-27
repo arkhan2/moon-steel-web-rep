@@ -4,14 +4,12 @@ import { motion } from "framer-motion";
 export function ProblemSolution() {
   return (
     <section className="py-24 bg-muted text-foreground relative overflow-hidden">
-      <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-      
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+          <h2 className="apple-section-title mb-6">
             The Market is Full of Shortcuts.
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="apple-section-copy">
             Most local competitors quietly substitute cheaper materials to win on price. The result? Equipment that warps, rusts, and fails health inspections within a few years.
           </p>
         </div>
@@ -22,11 +20,11 @@ export function ProblemSolution() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-card border border-border p-8 rounded-lg shadow-sm"
+            className="apple-surface p-8"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
               <XCircle className="w-8 h-8 text-destructive" />
-              <h3 className="text-2xl font-display font-bold text-foreground">The Typical Workshop</h3>
+              <h3 className="text-2xl font-display font-semibold text-foreground">The Typical Workshop</h3>
             </div>
             <ul className="space-y-5">
               {[
@@ -49,12 +47,11 @@ export function ProblemSolution() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-primary/5 border border-primary/30 p-8 rounded-lg shadow-sm relative overflow-hidden"
+            className="bg-primary/5 border border-primary/25 p-8 rounded-xl shadow-sm relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/15 blur-[50px]" />
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-primary/20 relative z-10">
               <CheckCircle2 className="w-8 h-8 text-primary" />
-              <h3 className="text-2xl font-display font-bold text-foreground">Moon Steel Standard</h3>
+              <h3 className="text-2xl font-display font-semibold text-foreground">Moon Steel Standard</h3>
             </div>
             <ul className="space-y-5 relative z-10">
               {[

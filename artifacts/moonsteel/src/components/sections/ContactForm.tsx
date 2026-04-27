@@ -69,14 +69,14 @@ export function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-gradient-to-b from-muted/45 via-background to-muted/35 border-t border-border/70">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 max-w-6xl mx-auto">
           
           {/* Contact Info Panel */}
-          <div className="lg:col-span-2 space-y-8 bg-muted text-foreground p-8 md:p-10 rounded-lg border border-border">
+          <div className="lg:col-span-2 space-y-8 bg-muted text-foreground p-8 md:p-10 rounded-xl border border-border">
             <div>
-              <h2 className="text-3xl font-display font-bold mb-4">Let's Build It Right.</h2>
+              <h2 className="text-3xl font-display font-semibold mb-4">Let's Build It Right.</h2>
               <p className="text-muted-foreground">
                 Get a custom fabrication quote in 24 hours. No obligations. Just precise engineering and clear pricing.
               </p>
@@ -86,11 +86,11 @@ export function ContactForm() {
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Factory Location</h4>
+                  <h4 className="font-medium text-foreground mb-1">Factory Location</h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Plot No. 45, Sector 15<br />
+                    Plot 142, Sector 24<br />
                     Korangi Industrial Area<br />
-                    Karachi, Pakistan
+                    Karachi-Pakistan
                   </p>
                 </div>
               </div>
@@ -98,23 +98,23 @@ export function ContactForm() {
               <div className="flex items-start gap-4">
                 <Phone className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Direct Line</h4>
-                  <a href="tel:+923000000000" className="text-muted-foreground text-sm hover:text-primary transition-colors">+92 300 0000000</a>
+                  <h4 className="font-medium text-foreground mb-1">Direct Line</h4>
+                  <a href="tel:+922135121145" className="text-muted-foreground text-sm hover:text-primary transition-colors">+92-21-35121145-46</a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Mail className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                  <a href="mailto:quotes@moonsteelfab.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">quotes@moonsteelfab.com</a>
+                  <h4 className="font-medium text-foreground mb-1">Email</h4>
+                  <a href="mailto:info@moonsteelfab.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">info@moonsteelfab.com</a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Clock className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-foreground mb-1">Business Hours</h4>
+                  <h4 className="font-medium text-foreground mb-1">Business Hours</h4>
                   <p className="text-muted-foreground text-sm">Mon - Sat: 9:00 AM - 6:00 PM</p>
                 </div>
               </div>
@@ -122,10 +122,10 @@ export function ContactForm() {
 
             <div className="pt-8 border-t border-border mt-8">
               <a 
-                href="https://wa.me/923000000000"
+                href="https://wa.me/923312562246"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-4 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-md font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 w-full min-h-11 px-6 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full border border-primary/80 font-medium transition-colors"
               >
                 Chat on WhatsApp
               </a>
@@ -134,7 +134,7 @@ export function ContactForm() {
 
           {/* Form */}
           <div className="lg:col-span-3 lg:pl-8">
-            <h3 className="text-2xl font-display font-bold mb-6 text-foreground">Request a Quote</h3>
+            <h3 className="text-2xl font-display font-semibold mb-6 text-foreground">Request a Quote</h3>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -188,7 +188,7 @@ export function ContactForm() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="+92 300 0000000" {...field} className="bg-card" />
+                          <Input placeholder="+92-21-35121145-46" {...field} className="bg-card" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -242,7 +242,7 @@ export function ContactForm() {
                 <div className="space-y-2">
                   <Label>Attach Drawings (Optional)</Label>
                   <div className="flex items-center gap-4">
-                    <label className="flex items-center justify-center gap-2 px-4 py-2 border border-dashed border-border rounded cursor-pointer hover:bg-muted/50 transition-colors w-full md:w-auto">
+                    <label className="flex items-center justify-center gap-2 px-4 py-2 border border-dashed border-border rounded-lg hover:border-primary/50 cursor-pointer hover:bg-muted/50 transition-colors w-full md:w-auto">
                       <FileUp className="w-4 h-4 text-muted-foreground" />
                       <span className="text-sm font-medium">Upload File</span>
                       <input 
@@ -261,7 +261,7 @@ export function ContactForm() {
                   <p className="text-xs text-muted-foreground">Accepts .pdf, .dxf, .dwg, .jpg, .png</p>
                 </div>
 
-                <Button type="submit" size="lg" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold group h-12 px-8">
+                <Button type="submit" size="lg" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-medium group">
                   <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
                   Submit Request
                 </Button>

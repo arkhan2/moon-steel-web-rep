@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoUrl from "@assets/ms3_1777279757146.png";
+import logoUrl from "@assets/ms3-logo.svg";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,7 +47,7 @@ export function Header() {
               alt="Moon Steel Fabricators"
               className="w-9 h-9 object-contain"
             />
-            <span className="font-display font-bold text-xl tracking-tight text-foreground">
+            <span className="font-display font-semibold text-xl tracking-tight text-foreground">
               MOON STEEL
             </span>
           </div>
@@ -58,14 +58,14 @@ export function Header() {
               <button
                 key={link.name}
                 onClick={() => scrollTo(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.name}
               </button>
             ))}
             <Button
               onClick={() => scrollTo("#contact")}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold uppercase tracking-wide text-xs"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm"
             >
               Request Quote
             </Button>
@@ -83,7 +83,7 @@ export function Header() {
 
       {/* Mobile Nav */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg py-4 px-4 flex flex-col gap-4">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-sm py-4 px-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <button
               key={link.name}
@@ -95,7 +95,7 @@ export function Header() {
           ))}
           <Button
             onClick={() => scrollTo("#contact")}
-            className="w-full mt-2 bg-primary text-primary-foreground font-semibold uppercase tracking-wide"
+            className="w-full mt-2 bg-primary text-primary-foreground font-medium"
           >
             Request Quote
           </Button>
