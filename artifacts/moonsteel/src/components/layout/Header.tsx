@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoUrl from "@assets/ms3-logo.svg";
+const logoUrl = "/ms3-logo.svg";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,8 +35,8 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-border py-3 shadow-sm"
-          : "bg-transparent border-transparent py-5"
+          ? "bg-background/80 backdrop-blur-xl border-border py-3 shadow-sm"
+          : "bg-background/65 backdrop-blur-xl border-border/60 py-5"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -47,9 +47,14 @@ export function Header() {
               alt="Moon Steel Fabricators"
               className="w-9 h-9 object-contain"
             />
-            <span className="font-display font-semibold text-xl tracking-tight text-foreground">
-              MOON STEEL
-            </span>
+            <div className="leading-none text-center">
+              <span className="moonsteel-wordmark block font-display font-semibold text-xl tracking-tight text-foreground">
+                MOON-STEEL
+              </span>
+              <span className="moonsteel-subline hidden mt-1 text-[10px] font-medium text-muted-foreground">
+                FABRICATORS
+              </span>
+            </div>
           </div>
 
           {/* Desktop Nav */}

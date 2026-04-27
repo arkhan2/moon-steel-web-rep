@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import logoUrl from "@assets/ms3-logo.svg";
+const logoUrl = "/ms3-logo.svg";
 
 export function Footer() {
   return (
@@ -14,9 +14,14 @@ export function Footer() {
                 alt="Moon Steel Fabricators"
                 className="w-10 h-10 object-contain"
               />
-              <span className="font-display font-semibold text-xl tracking-tight text-foreground">
-                MOON STEEL
-              </span>
+              <div className="leading-none text-center">
+                <span className="moonsteel-wordmark block font-display font-semibold text-xl tracking-tight text-foreground">
+                  MOON-STEEL
+                </span>
+                <span className="moonsteel-subline hidden mt-1 text-[10px] font-medium text-muted-foreground">
+                  FABRICATORS
+                </span>
+              </div>
             </div>
             <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
               Precision stainless steel fabrication for commercial kitchens, hospitals, and industrial facilities. Built with certified SS 304. No compromises.
