@@ -48,10 +48,11 @@
   --font-mono: var(--app-font-mono);
   --font-display: var(--app-font-display);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* Strict, controlled radius scale — engineered, not playful */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 }
 
 /* LIGHT MODE */
@@ -63,32 +64,32 @@
   --elevate-2: rgba(0,0,0, .08);
 
   /* Clean Steel White */
-  --background: 220 14% 98%;
-  /* Industrial Charcoal */
-  --foreground: 213 25% 16%;
-  --border: 220 13% 88%;
+  --background: 210 33% 98%;
+  /* Deep Steel Navy — replaces dead grey, matches the MSF logo */
+  --foreground: 215 45% 14%;
+  --border: 215 20% 88%;
   --card: 0 0% 100%;
-  --card-foreground: 213 25% 16%;
-  --card-border: 220 13% 91%;
+  --card-foreground: 215 45% 14%;
+  --card-border: 215 20% 91%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 213 25% 16%;
-  --popover-border: 220 13% 91%;
+  --popover-foreground: 215 45% 14%;
+  --popover-border: 215 20% 91%;
 
   /* Engineering Blue — primary action color (CTAs, links, highlights) */
   --primary: 221 83% 53%;
   --primary-foreground: 0 0% 100%;
 
-  /* Industrial Charcoal — structure, headers, dark surfaces */
-  --secondary: 213 25% 16%;
-  --secondary-foreground: 0 0% 98%;
+  /* Deep Steel Navy — structure, headers, dark surfaces (the logo's blue-charcoal) */
+  --secondary: 215 45% 16%;
+  --secondary-foreground: 210 30% 96%;
 
   /* Stainless Steel Grey — muted surfaces, supporting text */
-  --muted: 220 13% 93%;
-  --muted-foreground: 220 9% 46%;
+  --muted: 215 20% 94%;
+  --muted-foreground: 215 16% 46%;
 
-  --accent: 213 25% 16%;
-  --accent-foreground: 0 0% 98%;
+  --accent: 215 45% 16%;
+  --accent-foreground: 210 30% 96%;
 
   --destructive: 0 72% 50%;
   --destructive-foreground: 0 0% 100%;

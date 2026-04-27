@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoUrl from "@assets/ms3_1777279757146.png";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,10 +41,12 @@ export function Header() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-            <div className="w-8 h-8 bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-xl rounded-sm">
-              M
-            </div>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+            <img
+              src={logoUrl}
+              alt="Moon Steel Fabricators"
+              className="w-9 h-9 object-contain"
+            />
             <span className="font-display font-bold text-xl tracking-tight text-foreground">
               MOON STEEL
             </span>

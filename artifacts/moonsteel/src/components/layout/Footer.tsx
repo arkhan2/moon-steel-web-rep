@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import logoUrl from "@assets/ms3_1777279757146.png";
 
 export function Footer() {
   return (
@@ -7,10 +8,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-xl rounded-sm">
-                M
-              </div>
+            <div className="flex items-center gap-3 mb-6">
+              <img
+                src={logoUrl}
+                alt="Moon Steel Fabricators"
+                className="w-10 h-10 object-contain brightness-0 invert opacity-90"
+              />
               <span className="font-display font-bold text-xl tracking-tight text-white">
                 MOON STEEL
               </span>
