@@ -43,6 +43,14 @@
   --color-highlight: hsl(var(--highlight));
   --color-highlight-foreground: hsl(var(--highlight-foreground));
 
+  /* Brushed Copper — warm industrial complement to logo steel blue */
+  --color-accent-warm: hsl(var(--accent-warm));
+  --color-accent-warm-foreground: hsl(var(--accent-warm-foreground));
+
+  /* Patina Teal — secondary cool complement, deeper than primary */
+  --color-accent-cool: hsl(var(--accent-cool));
+  --color-accent-cool-foreground: hsl(var(--accent-cool-foreground));
+
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
   --font-mono: var(--app-font-mono);
@@ -100,6 +108,14 @@
   /* Safety Orange — critical emphasis ONLY (use <2%) */
   --highlight: 21 90% 48%;
   --highlight-foreground: 0 0% 100%;
+
+  /* Brushed Copper — warm industrial complement to steel blue (~#A8744C) */
+  --accent-warm: 26 38% 48%;
+  --accent-warm-foreground: 0 0% 100%;
+
+  /* Patina Teal — deeper cool complement (~#3F6679) */
+  --accent-cool: 202 32% 36%;
+  --accent-cool-foreground: 0 0% 100%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-display: 'Space Grotesk', sans-serif;

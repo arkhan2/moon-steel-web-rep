@@ -61,13 +61,13 @@ export function Products() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group border border-border p-6 bg-card hover:border-primary/50 transition-colors"
+              className="group border border-border p-6 bg-card rounded-md hover:border-primary/50 hover:shadow-sm transition-all"
             >
               <div className="mb-6 pb-6 border-b border-border">
                 <h3 className="text-xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>
-                <div className="text-xs font-mono text-muted-foreground bg-muted/50 inline-block px-2 py-1 rounded">
+                <div className="text-xs font-mono text-muted-foreground bg-muted/50 inline-block px-2 py-1 rounded-sm">
                   {product.specs}
                 </div>
               </div>

@@ -66,7 +66,7 @@ export function Projects() {
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-muted mb-4 border border-border relative">
+              <div className="aspect-[4/3] overflow-hidden bg-muted mb-4 border border-border relative rounded-md">
                 <img
                   src={project.image}
                   alt={project.title}

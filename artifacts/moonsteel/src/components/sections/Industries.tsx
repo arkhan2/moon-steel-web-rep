@@ -57,10 +57,10 @@ export function Industries() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-6 border border-border bg-card hover:border-primary/50 transition-colors"
+                className="flex items-start gap-4 p-6 border border-border bg-card rounded-md hover:border-accent-warm/50 hover:shadow-sm transition-all"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center shrink-0">
-                  <Icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 bg-accent-warm/10 rounded-md flex items-center justify-center shrink-0">
+                  <Icon className="w-6 h-6 text-accent-warm" />
                 </div>
                 <div>
                   <h3 className="text-lg font-display font-bold text-foreground mb-1">
