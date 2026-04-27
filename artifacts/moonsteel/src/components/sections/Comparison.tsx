@@ -41,12 +41,12 @@ const comparisons = [
 
 export function Comparison() {
   return (
-    <section id="comparison" className="py-24 bg-secondary text-secondary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-50" />
+    <section id="comparison" className="py-24 bg-background text-foreground relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-70" />
       
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
             The Moon Steel Difference.
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -55,15 +55,15 @@ export function Comparison() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 rounded-lg overflow-hidden border border-white/10 shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 rounded-lg overflow-hidden border border-border shadow-md bg-card">
             {/* Headers */}
-            <div className="hidden md:flex bg-secondary-foreground/5 p-6 items-center border-b border-white/10">
+            <div className="hidden md:flex bg-muted p-6 items-center border-b border-border">
               <span className="font-display font-bold text-muted-foreground uppercase tracking-wider text-sm">Specification</span>
             </div>
-            <div className="bg-primary p-6 items-center border-b border-white/10 md:border-l md:border-white/10">
+            <div className="bg-primary p-6 items-center border-b border-border md:border-l md:border-border">
               <span className="font-display font-bold text-primary-foreground uppercase tracking-wider text-sm">Moon Steel Standard</span>
             </div>
-            <div className="bg-secondary-foreground/10 p-6 items-center border-b border-white/10 md:border-l md:border-white/10">
+            <div className="bg-muted p-6 items-center border-b border-border md:border-l md:border-border">
               <span className="font-display font-bold text-muted-foreground uppercase tracking-wider text-sm">Typical Workshop</span>
             </div>
 
@@ -78,21 +78,21 @@ export function Comparison() {
                 className="contents md:grid md:grid-cols-3"
               >
                 {/* Mobile Feature Label */}
-                <div className="md:hidden bg-secondary-foreground/5 p-4 border-t border-white/10 flex items-center justify-center">
-                   <span className="font-display font-bold text-white text-sm">{row.feature}</span>
+                <div className="md:hidden bg-muted p-4 border-t border-border flex items-center justify-center">
+                   <span className="font-display font-bold text-foreground text-sm">{row.feature}</span>
                 </div>
                 
                 {/* Desktop Feature Label */}
-                <div className="hidden md:flex bg-secondary-foreground/5 p-6 border-t border-white/10 items-center">
-                  <span className="font-semibold text-white">{row.feature}</span>
+                <div className="hidden md:flex bg-muted/60 p-6 border-t border-border items-center">
+                  <span className="font-semibold text-foreground">{row.feature}</span>
                 </div>
 
-                <div className="bg-primary/10 p-6 border-t border-white/10 md:border-l md:border-white/10 flex items-center gap-3">
+                <div className="bg-primary/5 p-6 border-t border-border md:border-l md:border-border flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-white font-medium">{row.moon}</span>
+                  <span className="text-foreground font-medium">{row.moon}</span>
                 </div>
 
-                <div className="bg-secondary-foreground/10 p-6 border-t border-white/10 md:border-l md:border-white/10 flex items-center gap-3">
+                <div className="bg-card p-6 border-t border-border md:border-l md:border-border flex items-center gap-3">
                   <X className="w-5 h-5 text-destructive shrink-0" />
                   <span className="text-muted-foreground">{row.others}</span>
                 </div>

@@ -74,7 +74,7 @@ export function ContactForm() {
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 max-w-6xl mx-auto">
           
           {/* Contact Info Panel */}
-          <div className="lg:col-span-2 space-y-8 bg-secondary text-white p-8 md:p-10 rounded-lg">
+          <div className="lg:col-span-2 space-y-8 bg-muted text-foreground p-8 md:p-10 rounded-lg border border-border">
             <div>
               <h2 className="text-3xl font-display font-bold mb-4">Let's Build It Right.</h2>
               <p className="text-muted-foreground">
@@ -86,7 +86,7 @@ export function ContactForm() {
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Factory Location</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Factory Location</h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     Plot No. 45, Sector 15<br />
                     Korangi Industrial Area<br />
@@ -98,7 +98,7 @@ export function ContactForm() {
               <div className="flex items-start gap-4">
                 <Phone className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Direct Line</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Direct Line</h4>
                   <a href="tel:+923000000000" className="text-muted-foreground text-sm hover:text-primary transition-colors">+92 300 0000000</a>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export function ContactForm() {
               <div className="flex items-start gap-4">
                 <Mail className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Email</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Email</h4>
                   <a href="mailto:quotes@moonsteelfab.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">quotes@moonsteelfab.com</a>
                 </div>
               </div>
@@ -114,18 +114,18 @@ export function ContactForm() {
               <div className="flex items-start gap-4">
                 <Clock className="w-6 h-6 text-primary shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Business Hours</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Business Hours</h4>
                   <p className="text-muted-foreground text-sm">Mon - Sat: 9:00 AM - 6:00 PM</p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8 border-t border-white/10 mt-8">
+            <div className="pt-8 border-t border-border mt-8">
               <a 
                 href="https://wa.me/923000000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-4 bg-[#25D366] hover:bg-[#1DA851] text-white rounded font-semibold transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-4 bg-[#25D366] hover:bg-[#1DA851] text-white rounded-md font-semibold transition-colors"
               >
                 Chat on WhatsApp
               </a>

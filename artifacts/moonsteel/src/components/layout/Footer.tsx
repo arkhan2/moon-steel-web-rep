@@ -3,7 +3,7 @@ import logoUrl from "@assets/ms3_1777279757146.png";
 
 export function Footer() {
   return (
-    <footer className="bg-secondary text-secondary-foreground pt-16 pb-8 border-t border-secondary-border/10">
+    <footer className="bg-muted text-foreground pt-16 pb-8 border-t border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
@@ -12,9 +12,9 @@ export function Footer() {
               <img
                 src={logoUrl}
                 alt="Moon Steel Fabricators"
-                className="w-10 h-10 object-contain brightness-0 invert opacity-90"
+                className="w-10 h-10 object-contain"
               />
-              <span className="font-display font-bold text-xl tracking-tight text-white">
+              <span className="font-display font-bold text-xl tracking-tight text-foreground">
                 MOON STEEL
               </span>
             </div>
@@ -24,7 +24,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-white mb-6 uppercase tracking-wider text-sm">Contact</h4>
+            <h4 className="font-display font-bold text-foreground mb-6 uppercase tracking-wider text-sm">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
@@ -35,24 +35,24 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <a href="tel:+923000000000" className="hover:text-white transition-colors">+92 300 0000000</a>
+                <a href="tel:+923000000000" className="hover:text-primary transition-colors">+92 300 0000000</a>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <a href="mailto:quotes@moonsteelfab.com" className="hover:text-white transition-colors">quotes@moonsteelfab.com</a>
+                <a href="mailto:quotes@moonsteelfab.com" className="hover:text-primary transition-colors">quotes@moonsteelfab.com</a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-white mb-6 uppercase tracking-wider text-sm">Hours</h4>
+            <h4 className="font-display font-bold text-foreground mb-6 uppercase tracking-wider text-sm">Hours</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Clock className="w-5 h-5 text-primary shrink-0" />
                 <div>
-                  <p className="text-white font-medium mb-1">Monday - Saturday</p>
+                  <p className="text-foreground font-medium mb-1">Monday - Saturday</p>
                   <p>9:00 AM - 6:00 PM</p>
-                  <p className="mt-2 text-white font-medium mb-1">Sunday</p>
+                  <p className="mt-2 text-foreground font-medium mb-1">Sunday</p>
                   <p>Closed</p>
                 </div>
               </li>
@@ -60,22 +60,22 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-white mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+            <h4 className="font-display font-bold text-foreground mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
             <ul className="space-y-3">
-              <li><a href="#products" className="text-sm text-muted-foreground hover:text-white transition-colors">Products & Specs</a></li>
-              <li><a href="#comparison" className="text-sm text-muted-foreground hover:text-white transition-colors">Material Comparison</a></li>
-              <li><a href="#projects" className="text-sm text-muted-foreground hover:text-white transition-colors">Project Portfolio</a></li>
-              <li><a href="#contact" className="text-sm text-muted-foreground hover:text-white transition-colors">Request a Quote</a></li>
+              <li><a href="#products" className="text-sm text-muted-foreground hover:text-primary transition-colors">Products & Specs</a></li>
+              <li><a href="#comparison" className="text-sm text-muted-foreground hover:text-primary transition-colors">Material Comparison</a></li>
+              <li><a href="#projects" className="text-sm text-muted-foreground hover:text-primary transition-colors">Project Portfolio</a></li>
+              <li><a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Request a Quote</a></li>
             </ul>
           </div>
 
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Moon Steel Fabricators. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

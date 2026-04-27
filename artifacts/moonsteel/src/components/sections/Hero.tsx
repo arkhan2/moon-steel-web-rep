@@ -4,15 +4,15 @@ import { ArrowRight, Download, Zap } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden bg-secondary">
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden bg-background">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/hero-bg.png"
           alt="Brushed stainless steel background"
-          className="w-full h-full object-cover opacity-30 mix-blend-overlay"
+          className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/80 to-secondary/40" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-background via-background/85 to-muted/60" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
@@ -33,10 +33,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight mb-6"
+            className="text-5xl md:text-7xl font-display font-bold text-foreground leading-[1.1] tracking-tight mb-6"
           >
             Precision Stainless Steel <br className="hidden md:block" />
-            For Kitchens That <span className="text-transparent bg-clip-text bg-gradient-to-r from-muted to-muted-foreground">Actually Last.</span>
+            For Kitchens That <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Actually Last.</span>
           </motion.h1>
 
           <motion.p
@@ -79,7 +79,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 font-semibold tracking-wide text-base h-14 px-8 group"
+              className="border-foreground/20 text-foreground hover:bg-foreground/5 font-semibold tracking-wide text-base h-14 px-8 group"
               onClick={() => {
                 document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
@@ -92,7 +92,7 @@ export function Hero() {
       </div>
 
       {/* Industrial accent detail */}
-      <div className="absolute bottom-0 right-0 w-64 h-64 border-t border-l border-white/5 rounded-tl-full opacity-50 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 border-t border-l border-foreground/5 rounded-tl-full opacity-60 pointer-events-none" />
     </section>
   );
 }
