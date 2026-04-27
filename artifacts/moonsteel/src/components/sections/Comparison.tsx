@@ -52,17 +52,17 @@ export function Comparison() {
           <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
             <div className="hidden md:grid md:grid-cols-12 border-b border-border bg-muted/60">
               <div className="col-span-4 p-5">
-                <span className="text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                <span className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground">
                   Specification
                 </span>
               </div>
               <div className="col-span-4 p-5 border-l border-border bg-primary/5">
-                <span className="text-xs font-medium uppercase tracking-[0.06em] text-primary">
+                <span className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-primary">
                   Moon Steel Standard
                 </span>
               </div>
               <div className="col-span-4 p-5 border-l border-border">
-                <span className="text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground">
+                <span className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground">
                   Typical Workshop
                 </span>
               </div>
