@@ -1,0 +1,90 @@
+import { motion } from "framer-motion";
+
+const projects = [
+  {
+    image: "/images/projects/hotel-kitchen.png",
+    title: "Hotel Kitchen Prep Area",
+    scope: "Prep Tables, Sinks, Wall Shelving",
+  },
+  {
+    image: "/images/projects/hospital-prep.png",
+    title: "Hospital Sterile Prep Station",
+    scope: "Custom Fabrication, Seamless Welds",
+  },
+  {
+    image: "/images/projects/restaurant-line.png",
+    title: "Restaurant Cooking Line",
+    scope: "Exhaust Hood, Equipment Stands",
+  },
+  {
+    image: "/images/projects/pharma-cleanroom.png",
+    title: "Pharma Cleanroom Workbench",
+    scope: "Hygienic Workstations, Drawers",
+  },
+  {
+    image: "/images/projects/qsr-kitchen.png",
+    title: "QSR Back-of-House",
+    scope: "Prep Counters, Assembly Tables",
+  },
+  {
+    image: "/images/projects/industrial-cafeteria.png",
+    title: "Industrial Cafeteria Serving Line",
+    scope: "Hot/Cold Displays, Tray Slides",
+  },
+  {
+    image: "/images/projects/custom-shelving.png",
+    title: "Cold Storage Shelving",
+    scope: "Heavy-Duty Racking, Slotted Shelves",
+  },
+  {
+    image: "/images/projects/grease-trap.png",
+    title: "Commercial Grease Interceptor",
+    scope: "Custom Sized Grease Trap, Plumbing",
+  }
+];
+
+export function Projects() {
+  return (
+    <section id="projects" className="py-24 bg-card border-y border-border">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+            Proven Installations.
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Our fabrication speaks for itself. Explore recent high-performance stainless steel installations across various rigorous environments.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {projects.map((project, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group cursor-pointer"
+            >
+              <div className="aspect-[4/3] overflow-hidden bg-muted mb-4 border border-border relative">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <h3 className="text-lg font-display font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {project.scope}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

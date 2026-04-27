@@ -1,0 +1,78 @@
+import { CheckCircle2, XCircle } from "lucide-react";
+import { motion } from "framer-motion";
+
+export function ProblemSolution() {
+  return (
+    <section className="py-24 bg-secondary text-white relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
+      
+      <div className="container relative z-10 mx-auto px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+            The Market is Full of Shortcuts.
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Most local competitors quietly substitute cheaper materials to win on price. The result? Equipment that warps, rusts, and fails health inspections within a few years.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+          {/* The Problem */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-background/5 border border-white/10 p-8 rounded-lg backdrop-blur-sm"
+          >
+            <div className="flex items-center gap-3 mb-6 pb-6 border-b border-white/10">
+              <XCircle className="w-8 h-8 text-destructive" />
+              <h3 className="text-2xl font-display font-bold text-white">The Typical Workshop</h3>
+            </div>
+            <ul className="space-y-5">
+              {[
+                "Uses SS 200 series (cheaper, magnetic, rusts quickly)",
+                "Reduces gauge thickness to save costs (causes warping)",
+                "Spot or MIG welding that breaks under stress",
+                "Mill finish with sharp, hazardous edges",
+                "Fails international HACCP hygiene standards"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-2 shrink-0" />
+                  <span className="text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* The Solution */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-primary/10 border border-primary/30 p-8 rounded-lg backdrop-blur-sm relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[50px]" />
+            <div className="flex items-center gap-3 mb-6 pb-6 border-b border-primary/20 relative z-10">
+              <CheckCircle2 className="w-8 h-8 text-primary" />
+              <h3 className="text-2xl font-display font-bold text-white">Moon Steel Standard</h3>
+            </div>
+            <ul className="space-y-5 relative z-10">
+              {[
+                "100% Certified SS 304 (high nickel, non-magnetic, corrosion resistant)",
+                "Accurate, heavy-duty gauge thickness specified for load",
+                "Precision TIG welding, ground flat and polished",
+                "Food-grade #4 satin finish with radiused, deburred edges",
+                "Fully HACCP-compliant for strict health inspections"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                  <span className="text-white">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}

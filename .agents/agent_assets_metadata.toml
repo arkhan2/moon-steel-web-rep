@@ -1,0 +1,92 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ji3xjZn4dWHlQmzwxY9ce"
+uri = "file://artifacts/moonsteel/public/images/hero-bg.png"
+type = "image"
+title = "Hero background metal"
+
+[[generated]]
+id = "urXpafEqMMgx7L_4wAeKQ"
+uri = "file://artifacts/moonsteel/public/images/project-hotel.png"
+type = "image"
+title = "Hotel Kitchen Line"
+
+[[generated]]
+id = "mIHpii5Ys0OGmhf49mfSn"
+uri = "file://artifacts/moonsteel/public/images/project-hospital.png"
+type = "image"
+title = "Hospital Sterile Station"
+
+[[generated]]
+id = "HIr_9vHkfQ8Oq5OnaU8YY"
+uri = "file://artifacts/moonsteel/public/images/project-hood.png"
+type = "image"
+title = "Restaurant Exhaust Hood"
+
+[[generated]]
+id = "j6o9VL09pcVA8CrM2d9PP"
+uri = "file://artifacts/moonsteel/public/images/project-table.png"
+type = "image"
+title = "Custom Work Table"
+
+[[generated]]
+id = "DVunCs9XMzkchERNU2SEP"
+uri = "file://artifacts/moonsteel/public/images/project-storage.png"
+type = "image"
+title = "Industrial Cold Storage"
+
+[[generated]]
+id = "t56_qNanqx5WLzQb3M6gI"
+uri = "file://artifacts/moonsteel/public/images/project-sink.png"
+type = "image"
+title = "Commercial Sink Setup"
+
+[[generated]]
+id = "YuWVUsVlGAsELITTagWiN"
+uri = "file://artifacts/moonsteel/public/images/projects/hotel-kitchen.png"
+type = "image"
+title = "hotel kitchen prep tables"
+
+[[generated]]
+id = "iWhEKb4KPAkwprlicwG4h"
+uri = "file://artifacts/moonsteel/public/images/projects/hospital-prep.png"
+type = "image"
+title = "hospital sterile prep station"
+
+[[generated]]
+id = "6iJO-gNcJCnCFZEx1FWO1"
+uri = "file://artifacts/moonsteel/public/images/projects/restaurant-line.png"
+type = "image"
+title = "restaurant cooking line hood"
+
+[[generated]]
+id = "I-2IGgb28H-dhih6DOYYz"
+uri = "file://artifacts/moonsteel/public/images/projects/pharma-cleanroom.png"
+type = "image"
+title = "pharma cleanroom workbench"
+
+[[generated]]
+id = "gvsNmhr0Yc1-rJ6T8H21_"
+uri = "file://artifacts/moonsteel/public/images/projects/qsr-kitchen.png"
+type = "image"
+title = "QSR back of house"
+
+[[generated]]
+id = "SG_dQV-udCTawjO5qLgeh"
+uri = "file://artifacts/moonsteel/public/images/projects/industrial-cafeteria.png"
+type = "image"
+title = "large industrial cafeteria"
+
+[[generated]]
+id = "qw5693v7LCofqntzaSQKg"
+uri = "file://artifacts/moonsteel/public/images/projects/custom-shelving.png"
+type = "image"
+title = "custom shelving installation"
+
+[[generated]]
+id = "aNPvEi7cBK-IuelAbJcUT"
+uri = "file://artifacts/moonsteel/public/images/projects/grease-trap.png"
+type = "image"
+title = "grease trap installation"
