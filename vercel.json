@@ -1,7 +1,7 @@
 {
   "framework": "vite",
-  "buildCommand": "corepack pnpm --filter @workspace/moonsteel run build",
-  "outputDirectory": "artifacts/moonsteel/dist/public",
+  "buildCommand": "corepack pnpm --filter @workspace/moonsteel run build && node ./scripts/vercel-copy-output.mjs",
+  "outputDirectory": "public",
   "installCommand": "corepack pnpm install --frozen-lockfile",
   "rewrites": [
     {
