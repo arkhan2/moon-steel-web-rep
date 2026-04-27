@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Zap } from "lucide-react";
 
 export function Hero() {
   return (
@@ -47,6 +47,18 @@ export function Hero() {
           >
             Certified SS 304. Accurate gauges. Flawless TIG welding. We build commercial kitchen equipment, hospital sterile prep stations, and industrial solutions designed to endure 15+ years of severe use. No compromises.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-highlight/15 border border-highlight/40 rounded-sm"
+          >
+            <Zap className="w-3.5 h-3.5 text-highlight" strokeWidth={2.5} />
+            <span className="text-highlight font-semibold tracking-wide text-xs uppercase">
+              Quote Returned in 24 Hours
+            </span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

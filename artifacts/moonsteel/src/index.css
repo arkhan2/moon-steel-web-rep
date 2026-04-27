@@ -40,6 +40,9 @@
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-destructive-border: var(--destructive-border);
 
+  --color-highlight: hsl(var(--highlight));
+  --color-highlight-foreground: hsl(var(--highlight-foreground));
+
   --font-sans: var(--app-font-sans);
   --font-serif: var(--app-font-serif);
   --font-mono: var(--app-font-mono);
@@ -59,37 +62,43 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --background: 0 0% 98%;
-  --foreground: 220 15% 15%;
-  --border: 220 10% 85%;
+  /* Clean Steel White */
+  --background: 220 14% 98%;
+  /* Industrial Charcoal */
+  --foreground: 213 25% 16%;
+  --border: 220 13% 88%;
   --card: 0 0% 100%;
-  --card-foreground: 220 15% 15%;
-  --card-border: 220 10% 90%;
-  
-  --popover: 0 0% 100%;
-  --popover-foreground: 220 15% 15%;
-  --popover-border: 220 10% 90%;
+  --card-foreground: 213 25% 16%;
+  --card-border: 220 13% 91%;
 
-  /* Safety Orange */
-  --primary: 24 95% 53%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 213 25% 16%;
+  --popover-border: 220 13% 91%;
+
+  /* Engineering Blue — primary action color (CTAs, links, highlights) */
+  --primary: 221 83% 53%;
   --primary-foreground: 0 0% 100%;
-  
-  /* Graphite */
-  --secondary: 220 15% 20%;
+
+  /* Industrial Charcoal — structure, headers, dark surfaces */
+  --secondary: 213 25% 16%;
   --secondary-foreground: 0 0% 98%;
-  
-  /* Stainless Silver */
-  --muted: 220 10% 90%;
-  --muted-foreground: 220 10% 40%;
-  
-  --accent: 220 15% 20%;
+
+  /* Stainless Steel Grey — muted surfaces, supporting text */
+  --muted: 220 13% 93%;
+  --muted-foreground: 220 9% 46%;
+
+  --accent: 213 25% 16%;
   --accent-foreground: 0 0% 98%;
-  
-  --destructive: 0 84% 60%;
+
+  --destructive: 0 72% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 220 10% 80%;
-  --ring: 24 95% 53%;
+  --input: 220 13% 85%;
+  --ring: 221 83% 53%;
+
+  /* Safety Orange — critical emphasis ONLY (use <2%) */
+  --highlight: 21 90% 48%;
+  --highlight-foreground: 0 0% 100%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-display: 'Space Grotesk', sans-serif;
@@ -109,23 +118,26 @@
   --popover-foreground: 0 0% 95%;
   --popover-border: 220 20% 20%;
 
-  --primary: 24 95% 53%;
+  --primary: 221 83% 60%;
   --primary-foreground: 0 0% 100%;
-  
-  --secondary: 220 15% 20%;
+
+  --secondary: 213 25% 16%;
   --secondary-foreground: 0 0% 98%;
-  
+
   --muted: 220 20% 20%;
-  --muted-foreground: 220 10% 60%;
-  
+  --muted-foreground: 220 10% 65%;
+
   --accent: 220 20% 25%;
   --accent-foreground: 0 0% 98%;
-  
-  --destructive: 0 84% 60%;
+
+  --destructive: 0 72% 55%;
   --destructive-foreground: 0 0% 100%;
 
   --input: 220 20% 30%;
-  --ring: 24 95% 53%;
+  --ring: 221 83% 60%;
+
+  --highlight: 21 90% 55%;
+  --highlight-foreground: 0 0% 100%;
 }
 
 @layer base {
