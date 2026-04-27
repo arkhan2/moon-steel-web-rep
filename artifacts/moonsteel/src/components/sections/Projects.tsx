@@ -45,7 +45,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 bg-card border-y border-border">
+    <section id="projects" className="layer-1 py-24 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="apple-section-title mb-6 section-title-accent">
@@ -66,7 +66,7 @@ export function Projects() {
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-muted mb-4 border border-border relative rounded-xl">
+              <div className="layer-2 aspect-[4/3] overflow-hidden mb-4 relative rounded-xl">
                 <img
                   src={project.image}
                   alt={project.title}

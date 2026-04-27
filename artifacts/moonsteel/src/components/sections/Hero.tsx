@@ -21,13 +21,36 @@ const stripeImages = [
   },
 ];
 
+const arcPattern = [
+  {
+    size: "h-[30rem] w-[30rem] md:h-[38rem] md:w-[38rem] xl:h-[46rem] xl:w-[46rem]",
+    color: "border-primary/18",
+  },
+  {
+    size: "h-[24rem] w-[24rem] md:h-[30rem] md:w-[30rem] xl:h-[36rem] xl:w-[36rem]",
+    color: "border-foreground/12",
+  },
+  {
+    size: "h-[19rem] w-[19rem] md:h-[24rem] md:w-[24rem] xl:h-[29rem] xl:w-[29rem]",
+    color: "border-primary/14",
+  },
+  {
+    size: "h-[14rem] w-[14rem] md:h-[18rem] md:w-[18rem] xl:h-[22rem] xl:w-[22rem]",
+    color: "border-foreground/14",
+  },
+  {
+    size: "h-[10rem] w-[10rem] md:h-[13rem] md:w-[13rem] xl:h-[16rem] xl:w-[16rem]",
+    color: "border-primary/12",
+  },
+];
+
 export function Hero() {
   const [hoveredStripe, setHoveredStripe] = useState<number | null>(null);
 
   return (
-    <section className="relative min-h-[90vh] overflow-hidden bg-background pt-20 md:pt-24">
+    <section className="relative overflow-hidden bg-background pt-20 md:pt-24">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="grid min-h-[calc(90vh-5rem)] grid-cols-1 items-center gap-8 md:min-h-[calc(90vh-6rem)] md:grid-cols-[minmax(0,6fr)_minmax(0,4fr)] md:gap-0">
+        <div className="grid min-h-[calc(86vh-5rem)] grid-cols-1 items-center gap-8 md:min-h-[calc(82vh-6rem)] lg:min-h-[calc(90vh-6rem)] lg:grid-cols-[minmax(0,6fr)_minmax(0,4fr)] lg:gap-0">
           <div className="relative flex items-center self-center">
             <div
               className="pointer-events-none absolute inset-0 -z-10"
@@ -48,7 +71,7 @@ export function Hero() {
               </h1>
 
               <p className="apple-section-copy mb-10 max-w-2xl">
-                Certified SS 304. Accurate gauges. Flawless TIG welding. We build commercial kitchen
+                Certified SS 304. Accurate gauges. Flawless Laser Welding. We build commercial kitchen
                 equipment, hospital sterile prep stations, and industrial solutions designed to endure 15+
                 years of severe use. No compromises.
               </p>
@@ -86,7 +109,11 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hidden h-[80vh] max-h-[calc(90vh-5rem)] self-end overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm md:-ml-16 md:relative md:z-20 md:flex md:flex-col lg:-ml-20">
+          {/* Squeeze rules:
+              - < lg: use horizontal carousel (below), avoid cramped split layout
+              - lg+: show vertical image rail with capped width/height
+          */}
+          <div className="hidden lg:relative lg:z-20 lg:-ml-10 lg:flex lg:h-[min(78vh,760px)] lg:w-full lg:max-w-[min(42vw,560px)] lg:self-end lg:flex-col lg:overflow-hidden lg:rounded-xl lg:border lg:border-border/70 lg:bg-card lg:shadow-sm xl:-ml-16">
             {stripeImages.map((stripe, i) => {
               const active = hoveredStripe === i;
               const hasHover = hoveredStripe !== null;
@@ -121,12 +148,12 @@ export function Hero() {
             })}
           </div>
 
-          <div className="md:hidden">
-            <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
+          <div className="lg:hidden">
+            <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:gap-4">
               {stripeImages.map((stripe) => (
                 <article
                   key={stripe.label}
-                  className="relative h-40 min-w-[75%] snap-start overflow-hidden rounded-lg border border-border/70"
+                  className="relative h-40 min-w-[78%] snap-start overflow-hidden rounded-lg border border-border/70 sm:h-44 sm:min-w-[64%] md:h-52 md:min-w-[46%]"
                 >
                   <img
                     src={stripe.src}
@@ -144,7 +171,15 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-tl-full border-l border-t border-foreground/10 opacity-60" />
+      {/* Nested "arc field" background pattern */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {arcPattern.map((arc, i) => (
+          <div
+            key={`nested-arc-${i}`}
+            className={`absolute -bottom-10 -right-10 md:-bottom-12 md:-right-12 xl:-bottom-14 xl:-right-14 ${arc.size} rounded-tl-full border-l border-t ${arc.color}`}
+          />
+        ))}
+      </div>
     </section>
   );
 }

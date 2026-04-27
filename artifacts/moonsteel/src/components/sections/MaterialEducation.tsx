@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function MaterialEducation() {
   return (
-    <section className="py-20 bg-card border-y border-border">
+    <section className="layer-1 py-20 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -19,7 +19,7 @@ export function MaterialEducation() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-6 border border-border bg-background rounded-xl shadow-sm"
+              className="layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
                 <span className="w-3 h-3 bg-primary rounded-full"></span>
@@ -49,7 +49,7 @@ export function MaterialEducation() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-6 border border-border bg-background rounded-xl shadow-sm"
+              className="layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
                 <span className="w-3 h-3 bg-destructive rounded-full"></span>

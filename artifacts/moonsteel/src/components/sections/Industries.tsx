@@ -36,7 +36,7 @@ const industries = [
 
 export function Industries() {
   return (
-    <section className="py-24 bg-background">
+    <section className="layer-0 py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16">
           <h2 className="apple-section-title mb-6 section-title-accent">
@@ -57,9 +57,9 @@ export function Industries() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-6 border border-border bg-card rounded-xl hover:border-primary/40 hover:shadow-sm transition-colors"
+                className="layer-1 flex items-start gap-4 p-6 rounded-xl hover:border-primary/40 hover:shadow-sm transition-colors"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                <div className="layer-2 layer-tint-primary w-12 h-12 rounded-lg flex items-center justify-center shrink-0">
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>

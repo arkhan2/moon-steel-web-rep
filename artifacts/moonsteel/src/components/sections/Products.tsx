@@ -11,7 +11,7 @@ const products = [
   {
     name: "Commercial Sink Units",
     specs: "SS 304 | 1.5mm Bowl | Fully Welded",
-    desc: "Single, double, or triple compartment sinks. Deep-drawn or fully TIG welded bowls with radiused corners.",
+    desc: "Single, double, or triple compartment sinks. Deep-drawn or fully laser welded bowls with radiused corners.",
     uses: "Dishwashing Areas, Janitorial, Medical"
   },
   {
@@ -42,7 +42,7 @@ const products = [
 
 export function Products() {
   return (
-    <section id="products" className="py-24 bg-background">
+    <section id="products" className="layer-0 py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-16">
           <h2 className="apple-section-title mb-6 section-title-accent">
@@ -61,13 +61,13 @@ export function Products() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group apple-surface p-6 hover:border-primary/40 transition-colors"
+              className="group layer-1 p-6 rounded-xl hover:border-primary/40 transition-colors"
             >
               <div className="mb-6 pb-6 border-b border-border">
                 <h3 className="text-xl font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>
-                <div className="text-xs font-mono text-muted-foreground bg-muted/50 inline-block px-2 py-1 rounded-md">
+                <div className="layer-2 text-xs font-mono text-muted-foreground inline-block px-2 py-1 rounded-md">
                   {product.specs}
                 </div>
               </div>

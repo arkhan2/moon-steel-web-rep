@@ -14,7 +14,7 @@ const comparisons = [
   },
   {
     feature: "Welds",
-    moon: "Precision TIG, ground & polished",
+    moon: "Precision Laser Welding, ground & polished",
     others: "Spot/MIG, unfinished",
   },
   {
@@ -36,7 +36,7 @@ const comparisons = [
 
 export function Comparison() {
   return (
-    <section id="comparison" className="py-24 bg-background text-foreground">
+    <section id="comparison" className="layer-0 py-24 text-foreground">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="apple-section-title mb-6">
@@ -49,19 +49,19 @@ export function Comparison() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-            <div className="hidden md:grid md:grid-cols-12 border-b border-border bg-muted/60">
+          <div className="layer-1 overflow-hidden rounded-xl border border-border/80 ring-1 ring-black/5">
+            <div className="layer-2 hidden md:grid md:grid-cols-12 border-b border-border/80">
               <div className="col-span-4 p-5">
                 <span className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground">
                   Specification
                 </span>
               </div>
-              <div className="col-span-4 p-5 border-l border-border bg-primary/5">
+              <div className="col-span-4 p-5 border-l border-border/70 bg-primary/5">
                 <span className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-primary">
                   Moon Steel Standard
                 </span>
               </div>
-              <div className="col-span-4 p-5 border-l border-border">
+              <div className="col-span-4 p-5 border-l border-border/70">
                 <span className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-muted-foreground">
                   Typical Workshop
                 </span>
@@ -75,16 +75,18 @@ export function Comparison() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
-                className="grid grid-cols-1 md:grid-cols-12 border-t first:border-t-0 border-border"
+                className={`grid grid-cols-1 md:grid-cols-12 border-t first:border-t-0 border-border/70 ${
+                  i % 2 === 0 ? "bg-layer-1" : "bg-layer-2/45"
+                }`}
               >
-                <div className="md:col-span-4 p-5 bg-muted/30">
+                <div className="md:col-span-4 p-5">
                   <p className="text-xs uppercase tracking-[0.06em] text-muted-foreground mb-1 md:hidden">
                     Specification
                   </p>
                   <p className="font-semibold text-foreground">{row.feature}</p>
                 </div>
 
-                <div className="md:col-span-4 p-5 border-t md:border-t-0 md:border-l border-border bg-primary/5">
+                <div className="layer-2 layer-tint-primary md:col-span-4 p-5 border-t md:border-t-0 md:border-l border-border/70">
                   <p className="text-xs uppercase tracking-[0.06em] text-primary mb-2 md:hidden">
                     Moon Steel Standard
                   </p>
@@ -94,7 +96,7 @@ export function Comparison() {
                   </div>
                 </div>
 
-                <div className="md:col-span-4 p-5 border-t md:border-t-0 md:border-l border-border">
+                <div className="md:col-span-4 p-5 border-t md:border-t-0 md:border-l border-border/70">
                   <p className="text-xs uppercase tracking-[0.06em] text-muted-foreground mb-2 md:hidden">
                     Typical Workshop
                   </p>

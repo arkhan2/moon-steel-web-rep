@@ -57,7 +57,7 @@ export function ProblemSolution() {
               {[
                 "100% Certified SS 304 (high nickel, non-magnetic, corrosion resistant)",
                 "Accurate, heavy-duty gauge thickness specified for load",
-                "Precision TIG welding, ground flat and polished",
+                "Precision Laser Welding, ground flat and polished",
                 "Food-grade #4 satin finish with radiused, deburred edges",
                 "Fully HACCP-compliant for strict health inspections"
               ].map((item, i) => (

@@ -74,7 +74,7 @@ export function ContactForm() {
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 max-w-6xl mx-auto">
           
           {/* Contact Info Panel */}
-          <div className="lg:col-span-2 space-y-8 bg-muted text-foreground p-8 md:p-10 rounded-xl border border-border">
+          <div className="lg:col-span-2 layer-2 space-y-8 text-foreground p-8 md:p-10 rounded-xl">
             <div>
               <h2 className="text-3xl font-display font-semibold mb-4">Let's Build It Right.</h2>
               <p className="text-muted-foreground">
@@ -146,7 +146,7 @@ export function ContactForm() {
                       <FormItem>
                         <FormLabel>Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="John Doe" {...field} className="bg-card" />
+                          <Input placeholder="John Doe" {...field} className="layer-1" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -159,7 +159,7 @@ export function ContactForm() {
                       <FormItem>
                         <FormLabel>Company / Business</FormLabel>
                         <FormControl>
-                          <Input placeholder="Acme Hospitality" {...field} className="bg-card" />
+                          <Input placeholder="Acme Hospitality" {...field} className="layer-1" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -175,7 +175,7 @@ export function ContactForm() {
                       <FormItem>
                         <FormLabel>Email Address</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="john@example.com" {...field} className="bg-card" />
+                          <Input type="email" placeholder="john@example.com" {...field} className="layer-1" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -188,7 +188,7 @@ export function ContactForm() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="+92-21-35121145-46" {...field} className="bg-card" />
+                          <Input placeholder="+92-21-35121145-46" {...field} className="layer-1" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -204,7 +204,7 @@ export function ContactForm() {
                       <FormLabel>Project Type</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                          <SelectTrigger className="bg-card">
+                          <SelectTrigger className="layer-1">
                             <SelectValue placeholder="Select a project category" />
                           </SelectTrigger>
                         </FormControl>
@@ -230,7 +230,7 @@ export function ContactForm() {
                       <FormControl>
                         <Textarea 
                           placeholder="Please provide dimensions, specific requirements, or the scope of work..." 
-                          className="min-h-[120px] bg-card"
+                          className="layer-1 min-h-[120px]"
                           {...field} 
                         />
                       </FormControl>

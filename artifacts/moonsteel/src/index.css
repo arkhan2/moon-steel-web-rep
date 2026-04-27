@@ -14,6 +14,10 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
   --color-card-border: hsl(var(--card-border));
+  --color-layer-0: hsl(var(--layer-0));
+  --color-layer-1: hsl(var(--layer-1));
+  --color-layer-2: hsl(var(--layer-2));
+  --color-layer-3: hsl(var(--layer-3));
 
   --color-popover: hsl(var(--popover));
   --color-popover-foreground: hsl(var(--popover-foreground));
@@ -78,6 +82,12 @@
   --card-foreground: 220 13% 11%;
   --card-border: 220 13% 92%;
 
+  /* Neutral layer system (base to overlay) */
+  --layer-0: 0 0% 98.5%;   /* Page/app background */
+  --layer-1: 0 0% 100%;    /* Components on page background */
+  --layer-2: 220 16% 97%;  /* Components stacked over components */
+  --layer-3: 220 14% 94.5%; /* Popovers, active panels, highlighted overlays */
+
   --popover: 0 0% 100%;
   --popover-foreground: 220 13% 11%;
   --popover-border: 220 13% 92%;
@@ -124,6 +134,12 @@
   --card: 220 20% 12%;
   --card-foreground: 0 0% 95%;
   --card-border: 220 20% 20%;
+
+  /* Dark-mode neutral layer system */
+  --layer-0: 220 20% 10%;
+  --layer-1: 220 20% 13%;
+  --layer-2: 220 20% 16%;
+  --layer-3: 220 20% 19%;
   
   --popover: 220 20% 12%;
   --popover-foreground: 0 0% 95%;
@@ -171,6 +187,37 @@
 }
 
 @layer components {
+  /* Layering standard:
+   * - Use one step up when nesting (0 -> 1 -> 2 -> 3)
+   * - Never skip more than one level in normal content flows
+   * - Add tint only to interactive/semantic surfaces, never all layers
+   */
+  .layer-0 {
+    @apply bg-layer-0;
+  }
+
+  .layer-1 {
+    @apply bg-layer-1 border border-border/80;
+  }
+
+  .layer-2 {
+    @apply bg-layer-2 border border-border shadow-sm ring-1 ring-black/5;
+  }
+
+  .layer-3 {
+    @apply bg-layer-3 border border-border shadow-md ring-1 ring-black/10;
+  }
+
+  .layer-tint-primary {
+    background-color: hsl(var(--primary) / 0.045);
+    border-color: hsl(var(--primary) / 0.14);
+  }
+
+  .layer-tint-neutral {
+    background-color: hsl(var(--foreground) / 0.03);
+    border-color: hsl(var(--foreground) / 0.09);
+  }
+
   .section-title-accent {
     @apply text-foreground;
   }
@@ -216,6 +263,10 @@
   --destructive-foreground: 0 0% 100%;
   --input: 220 10% 82%;
   --ring: 223 73% 57%;
+  --layer-0: 0 0% 98.5%;
+  --layer-1: 0 0% 100%;
+  --layer-2: 220 10% 96.8%;
+  --layer-3: 220 10% 93.8%;
   --radius-sm: 4px;
   --radius-md: 4px;
   --radius-lg: 12px;

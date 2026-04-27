@@ -26,7 +26,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="py-24 bg-background border-y border-border">
+    <section id="process" className="layer-0 py-24 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="apple-section-title mb-6">
@@ -53,7 +53,7 @@ export function Process() {
                   transition={{ delay: i * 0.15 }}
                   className="flex flex-col items-center text-center group"
                 >
-                  <div className="w-20 h-20 bg-card border border-border rounded-full flex items-center justify-center mb-6 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300 relative shadow-sm">
+                  <div className="layer-1 w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300 relative shadow-sm">
                     <Icon className="w-8 h-8 text-foreground group-hover:text-primary transition-colors" />
                     <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-medium text-sm shadow-sm">
                       {i + 1}
