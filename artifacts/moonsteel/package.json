@@ -2,6 +2,11 @@
   "name": "@workspace/moonsteel",
   "version": "0.0.0",
   "private": true,
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3000",
     "build": "next build",
@@ -42,7 +47,6 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "next": "^16.0.0",
     "postcss": "^8.5.6",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
@@ -52,9 +56,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "catalog:",
     "next-themes": "^0.4.6",
-    "react": "catalog:",
     "react-day-picker": "^9.11.1",
-    "react-dom": "catalog:",
     "react-hook-form": "^7.55.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "^2.15.2",
