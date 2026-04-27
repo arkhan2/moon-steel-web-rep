@@ -76,8 +76,8 @@
   --popover-foreground: 215 45% 14%;
   --popover-border: 215 20% 91%;
 
-  /* Engineering Blue — primary action color (CTAs, links, highlights) */
-  --primary: 221 83% 53%;
+  /* Logo Steel Blue — primary action color, anchored to the MSF logo (#5A6B85) */
+  --primary: 217 19% 44%;
   --primary-foreground: 0 0% 100%;
 
   /* Deep Steel Navy — structure, headers, dark surfaces (the logo's blue-charcoal) */
@@ -95,7 +95,7 @@
   --destructive-foreground: 0 0% 100%;
 
   --input: 220 13% 85%;
-  --ring: 221 83% 53%;
+  --ring: 217 19% 44%;
 
   /* Safety Orange — critical emphasis ONLY (use <2%) */
   --highlight: 21 90% 48%;

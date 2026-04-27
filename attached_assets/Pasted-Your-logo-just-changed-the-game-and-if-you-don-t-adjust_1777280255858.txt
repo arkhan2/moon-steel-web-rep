@@ -1,0 +1,131 @@
+Your logo just changed the game—and if you don’t adjust your system around it, your site will feel disconnected.
+
+That muted steel-blue in your logo is now your **anchor color**. If you keep using generic bright blue (`#2563EB`), you’ll look inconsistent and careless.
+
+Let’s fix your prompt properly so everything aligns with the logo.
+
+---
+
+## 🎯 REVISED PROMPT — LIGHT UI ALIGNED WITH BRAND LOGO
+
+Design a light-theme, high-contrast B2B industrial website for Moon Steel Fabricators using the provided logo as the primary visual reference.
+
+---
+
+### 🎨 BRAND COLOR EXTRACTION (FROM LOGO)
+
+Use this as your **primary brand color**:
+
+* Steel Blue (from logo) → `#5A6B85` *(approximation based on logo)*
+  → Use for headings accents, icons, key highlights
+
+Supporting neutrals:
+
+* Dark Text → `#111827`
+* Body Text → `#374151`
+* Muted Text → `#6B7280`
+
+Background system:
+
+* Main Background → `#F9FAFB`
+* Section Background → `#FFFFFF`
+* Alternate Section → `#F3F4F6`
+
+Borders:
+
+* Subtle Divider → `#E5E7EB`
+
+---
+
+### 🔵 CTA STRATEGY (IMPORTANT)
+
+You now have two options:
+
+**Option A (Safe & Premium):**
+
+* Use logo blue `#5A6B85` for buttons
+* Hover → slightly darker shade
+
+**Option B (High Conversion):**
+
+* Use orange `#F97316` ONLY for primary CTA
+* Keep everything else in logo blue
+
+Do NOT mix both aggressively or it’ll look messy.
+
+---
+
+### 🔤 TYPOGRAPHY RULES
+
+* Headings → Dark (`#111827`) with occasional steel blue accents
+* Body → `#374151`
+* Never use logo blue for long paragraphs (kills readability)
+
+Font style:
+
+* Clean sans-serif (Inter / system UI)
+* Strong weight hierarchy:
+
+  * H1: bold, authoritative
+  * Body: medium, readable
+
+---
+
+### 🧱 STRUCTURE RULES
+
+* Use white cards on light grey background for depth
+* Use thin borders instead of heavy shadows
+* Maintain spacing over decoration
+
+---
+
+### 🎯 VISUAL DIRECTION
+
+The UI should feel:
+
+* Industrial
+* Engineered
+* Clean
+* Trustworthy
+
+NOT:
+
+* Startup-y
+* Colorful
+* Soft
+* Decorative
+
+---
+
+### 🚫 HARD CONSTRAINTS
+
+* Do NOT introduce random blues outside brand tone
+* Do NOT oversaturate the logo color everywhere
+* Do NOT use low-contrast text
+* Do NOT make everything white (flat + boring)
+
+---
+
+## 🔥 HARD TRUTH
+
+Right now your logo has a **muted, slightly vintage industrial feel**.
+
+If your UI becomes too modern, bright, or “techy”:
+→ your brand will feel inconsistent
+→ and subconsciously, people will trust you less
+
+You either:
+
+1. Align everything to this logo
+2. Or redesign the logo to match a more modern system
+
+Halfway = weak brand.
+
+---
+
+If you want to do this properly, next step is:
+
+* define exact Tailwind config (colors, fonts, radius, shadows)
+* so your dev (or AI) can’t drift off-brand
+
+Say the word.
