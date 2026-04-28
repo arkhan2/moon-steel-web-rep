@@ -51,11 +51,11 @@ export function Process() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-                  className="motion-reveal flex flex-col items-center text-center group"
+                  className="motion-reveal flex flex-col items-center text-center group overflow-visible pt-2 md:pt-0"
                 >
-                  <div className="layer-1 w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300 relative shadow-sm">
-                    <Icon className="w-8 h-8 text-foreground group-hover:text-primary transition-colors" />
-                    <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-medium text-sm shadow-sm">
+                  <div className="layer-1 relative mb-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-visible rounded-full shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-primary/5">
+                    <Icon className="h-7 w-7 text-foreground transition-colors group-hover:text-primary md:h-8 md:w-8" />
+                    <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground shadow-sm md:-right-2 md:-top-2 md:h-8 md:w-8 md:text-sm">
                       {i + 1}
                     </div>
                   </div>

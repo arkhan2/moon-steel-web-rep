@@ -21,7 +21,7 @@ export function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="apple-surface p-8"
+            className="motion-reveal apple-surface p-8"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
               <XCircle className="w-8 h-8 text-destructive" />
@@ -49,7 +49,7 @@ export function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
-            className="bg-primary/5 border border-primary/25 p-8 rounded-xl shadow-sm relative overflow-hidden"
+            className="motion-reveal bg-primary/5 border border-primary/25 p-8 rounded-xl shadow-sm relative overflow-hidden"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-primary/20 relative z-10">
               <CheckCircle2 className="w-8 h-8 text-primary" />

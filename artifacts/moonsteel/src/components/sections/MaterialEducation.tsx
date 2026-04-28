@@ -20,7 +20,7 @@ export function MaterialEducation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="layer-2 p-6 rounded-xl shadow-sm"
+              className="motion-reveal layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
                 <span className="w-3 h-3 bg-primary rounded-full"></span>
@@ -51,7 +51,7 @@ export function MaterialEducation() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
-              className="layer-2 p-6 rounded-xl shadow-sm"
+              className="motion-reveal layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
                 <span className="w-3 h-3 bg-destructive rounded-full"></span>
