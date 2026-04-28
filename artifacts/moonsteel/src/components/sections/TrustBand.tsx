@@ -2,15 +2,37 @@ import { useEffect, useMemo, useState } from "react";
 import { fetchCustomerLogos, fetchLogoSliderSpeed } from "@/features/admin/services/customerLogos";
 import type { CustomerLogo } from "@/features/admin/types";
 
+const LOGOS_CACHE_KEY = "moonsteel:customer-logos";
+const LOGO_SPEED_CACHE_KEY = "moonsteel:logo-slider-speed";
+
 export function TrustBand() {
   const [logos, setLogos] = useState<CustomerLogo[]>([]);
   const [sliderSpeed, setSliderSpeed] = useState(52);
 
   useEffect(() => {
     let isMounted = true;
+
+    // Render cached logos immediately (helps with perceived mobile load time).
+    try {
+      const cached = window.sessionStorage.getItem(LOGOS_CACHE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached) as CustomerLogo[];
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setLogos(parsed);
+        }
+      }
+    } catch {
+      // Ignore cache parse/storage errors.
+    }
+
     fetchCustomerLogos()
       .then((rows) => {
         if (isMounted) setLogos(rows);
+        try {
+          window.sessionStorage.setItem(LOGOS_CACHE_KEY, JSON.stringify(rows));
+        } catch {
+          // Ignore storage write errors.
+        }
       })
       .catch(() => {
         // Keep static fallback list when logos cannot be loaded.
@@ -22,9 +44,28 @@ export function TrustBand() {
 
   useEffect(() => {
     let isMounted = true;
+
+    // Use cached speed instantly to avoid visual jump.
+    try {
+      const cachedSpeed = window.sessionStorage.getItem(LOGO_SPEED_CACHE_KEY);
+      if (cachedSpeed) {
+        const parsed = Number(cachedSpeed);
+        if (Number.isFinite(parsed) && parsed >= 12 && parsed <= 120) {
+          setSliderSpeed(parsed);
+        }
+      }
+    } catch {
+      // Ignore cache parse/storage errors.
+    }
+
     fetchLogoSliderSpeed()
       .then((seconds) => {
         if (isMounted) setSliderSpeed(seconds);
+        try {
+          window.sessionStorage.setItem(LOGO_SPEED_CACHE_KEY, String(seconds));
+        } catch {
+          // Ignore storage write errors.
+        }
       })
       .catch(() => {
         // Keep default when settings cannot be loaded.
