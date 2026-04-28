@@ -44,6 +44,28 @@ export function useCustomerLogos() {
     }
   }, []);
 
+  const onUploadMany = useCallback(async (files: File[]) => {
+    if (files.length === 0) return;
+    setError(null);
+    setIsUploading(true);
+    try {
+      const created: CustomerLogo[] = [];
+      for (const file of files) {
+        // Upload sequentially to keep error handling predictable.
+        // If one file fails, we surface that error and keep successful uploads.
+        const row = await uploadCustomerLogo(file);
+        created.push(row);
+      }
+      if (created.length > 0) {
+        setLogos((prev) => [...created.reverse(), ...prev]);
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Bulk upload failed.");
+    } finally {
+      setIsUploading(false);
+    }
+  }, []);
+
   const onDelete = useCallback(async (logo: CustomerLogo) => {
     setError(null);
     const prev = logos;
@@ -63,6 +85,7 @@ export function useCustomerLogos() {
     error,
     refresh: load,
     upload: onUpload,
+    uploadMany: onUploadMany,
     remove: onDelete,
   };
 }

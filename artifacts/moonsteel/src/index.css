@@ -238,6 +238,24 @@
     @apply rounded-xl border border-border bg-card shadow-sm;
   }
 
+  .clients-carousel-track {
+    @apply flex w-max items-center gap-6;
+    animation: clients-marquee 34s linear infinite;
+  }
+
+  .clients-carousel-item {
+    @apply flex h-20 min-w-[140px] items-center justify-center rounded-xl border border-border/80 bg-layer-1 px-4 opacity-100 transition-all;
+  }
+
+}
+
+@keyframes clients-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Tesla visual system applied on /tesla while keeping original structure/components/data */

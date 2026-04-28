@@ -1,25 +1,12 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Zap } from "lucide-react";
+import { fetchHeroImages } from "@/features/admin/services/heroImages";
 
-const stripeImages = [
-  {
-    src: "/images/pc-karachi-receiving-area.png",
-    label: "PC Karachi - Receiving Area",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1400&q=80",
-    label: "Prep & Sinks",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1400&q=80",
-    label: "Stainless Workstations",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1400&q=80",
-    label: "Industrial Flow",
-  },
-];
+type HeroStripe = {
+  src: string | null;
+  label: string | null;
+};
 
 const arcPattern = [
   {
@@ -46,11 +33,56 @@ const arcPattern = [
 
 export function Hero() {
   const [hoveredStripe, setHoveredStripe] = useState<number | null>(null);
+  const [managedImages, setManagedImages] = useState<{ slot: number; image_url: string; label: string | null }[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      try {
+        const rows = await fetchHeroImages();
+        if (!isMounted) return;
+        setManagedImages(
+          rows.map((row) => ({
+            slot: row.slot,
+            image_url: row.image_url,
+            label: row.label,
+          })),
+        );
+      } catch {
+        if (!isMounted) return;
+        setManagedImages([]);
+      }
+    };
+    void load();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const heroImages = useMemo<HeroStripe[]>(() => {
+    const bySlot = new Map<number, { image_url: string; label: string | null }>();
+    managedImages.forEach((img) => bySlot.set(img.slot, { image_url: img.image_url, label: img.label }));
+
+    return Array.from({ length: 4 }, (_, index) => {
+      const slot = index + 1;
+      const managed = bySlot.get(slot);
+      if (!managed) {
+        return {
+          src: null,
+          label: null,
+        };
+      }
+      return {
+        src: managed.image_url,
+        label: managed.label,
+      };
+    });
+  }, [managedImages]);
 
   return (
     <section className="relative overflow-hidden bg-background pt-20 md:pt-24">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="grid min-h-[calc(86vh-5rem)] grid-cols-1 items-center gap-8 md:min-h-[calc(82vh-6rem)] lg:min-h-[calc(90vh-6rem)] lg:grid-cols-[minmax(0,6fr)_minmax(0,4fr)] lg:gap-0">
+        <div className="grid min-h-[calc(86vh-5rem)] grid-cols-1 items-center gap-8 md:min-h-[calc(82vh-6rem)] lg:min-h-[calc(90vh-6rem)] lg:grid-cols-2 lg:gap-10">
           <div className="relative flex items-center self-center">
             <div
               className="pointer-events-none absolute inset-0 -z-10"
@@ -113,36 +145,46 @@ export function Hero() {
               - < lg: use horizontal carousel (below), avoid cramped split layout
               - lg+: show vertical image rail with capped width/height
           */}
-          <div className="hidden lg:relative lg:z-20 lg:-ml-10 lg:flex lg:h-[min(78vh,760px)] lg:w-full lg:max-w-[min(42vw,560px)] lg:self-end lg:flex-col lg:overflow-hidden lg:rounded-xl lg:border lg:border-border/70 lg:bg-card lg:shadow-sm xl:-ml-16">
-            {stripeImages.map((stripe, i) => {
+          <div className="hidden lg:relative lg:z-20 lg:flex lg:h-[min(80vh,760px)] lg:w-full lg:self-stretch lg:flex-col lg:justify-self-end lg:overflow-hidden lg:rounded-xl lg:border lg:border-border/70 lg:bg-card lg:shadow-sm">
+            {heroImages.map((stripe, i) => {
               const active = hoveredStripe === i;
               const hasHover = hoveredStripe !== null;
               return (
                 <div
-                  key={stripe.label}
+                  key={`hero-slot-${i + 1}`}
                   onMouseEnter={() => setHoveredStripe(i)}
                   onMouseLeave={() => setHoveredStripe(null)}
                   className={`group relative overflow-hidden border-t border-border/50 first:border-t-0 transition-all duration-500 ease-in-out ${
                     active ? "flex-[5]" : hasHover ? "flex-[0.9]" : "flex-1"
                   }`}
                 >
-                  <img
-                    src={stripe.src}
-                    alt={stripe.label}
-                    className={`h-full w-full object-cover object-center transition-all duration-500 ease-in-out ${
-                      active
-                        ? "scale-100 grayscale-0 brightness-100 contrast-100"
-                        : "scale-100 grayscale-[0.25] brightness-90 contrast-90"
-                    }`}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-transparent" />
-                  <div
-                    className={`absolute bottom-3 right-3 rounded bg-black/45 px-2 py-1 text-xs font-medium text-white transition-all duration-500 ease-in-out ${
-                      active ? "opacity-100" : "opacity-70"
-                    }`}
-                  >
-                    {stripe.label}
-                  </div>
+                  {stripe.src ? (
+                    <>
+                      <img
+                        src={stripe.src}
+                        alt={stripe.label ?? `Hero image ${i + 1}`}
+                        className={`h-full w-full object-cover object-center transition-all duration-500 ease-in-out ${
+                          active
+                            ? "scale-100 grayscale-0 brightness-100 contrast-100"
+                            : "scale-100 grayscale-[0.25] brightness-90 contrast-90"
+                        }`}
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-transparent" />
+                      {stripe.label ? (
+                        <div
+                          className={`absolute bottom-3 right-3 rounded bg-black/45 px-2 py-1 text-xs font-medium text-white transition-all duration-500 ease-in-out ${
+                            active ? "opacity-100" : "opacity-70"
+                          }`}
+                        >
+                          {stripe.label}
+                        </div>
+                      ) : null}
+                    </>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-muted/25 text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
+                      Empty hero image
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -150,20 +192,30 @@ export function Hero() {
 
           <div className="lg:hidden">
             <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:gap-4">
-              {stripeImages.map((stripe) => (
+              {heroImages.map((stripe, index) => (
                 <article
-                  key={stripe.label}
+                  key={`hero-mobile-slot-${index + 1}`}
                   className="relative h-40 min-w-[78%] snap-start overflow-hidden rounded-lg border border-border/70 sm:h-44 sm:min-w-[64%] md:h-52 md:min-w-[46%]"
                 >
-                  <img
-                    src={stripe.src}
-                    alt={stripe.label}
-                    className="h-full w-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-transparent" />
-                  <div className="absolute bottom-3 right-3 rounded bg-black/45 px-2 py-1 text-xs font-medium text-white">
-                    {stripe.label}
-                  </div>
+                  {stripe.src ? (
+                    <>
+                      <img
+                        src={stripe.src}
+                        alt={stripe.label ?? "Hero image"}
+                        className="h-full w-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-transparent" />
+                      {stripe.label ? (
+                        <div className="absolute bottom-3 right-3 rounded bg-black/45 px-2 py-1 text-xs font-medium text-white">
+                          {stripe.label}
+                        </div>
+                      ) : null}
+                    </>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-muted/25 text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
+                      Empty hero image
+                    </div>
+                  )}
                 </article>
               ))}
             </div>

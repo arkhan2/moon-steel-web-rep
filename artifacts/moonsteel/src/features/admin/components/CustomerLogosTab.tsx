@@ -1,74 +1,118 @@
 "use client";
 
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, DragEvent, useEffect, useMemo, useState } from "react";
 import { Trash2, Upload } from "lucide-react";
 import { useCustomerLogos } from "@/features/admin/hooks/useCustomerLogos";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const allowedTypes = new Set(["image/png", "image/jpeg", "image/jpg", "image/webp", "image/svg+xml"]);
-
 export function CustomerLogosTab() {
-  const { logos, isLoading, isUploading, error, upload, remove } = useCustomerLogos();
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const { logos, isLoading, isUploading, error, uploadMany, remove } = useCustomerLogos();
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const previewUrl = useMemo(() => {
-    if (!selectedFile) return null;
-    return URL.createObjectURL(selectedFile);
-  }, [selectedFile]);
+  const previewUrls = useMemo(
+    () =>
+      selectedFiles.map((file) => ({
+        name: file.name,
+        url: URL.createObjectURL(file),
+      })),
+    [selectedFiles],
+  );
 
   useEffect(() => {
     return () => {
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrls.forEach((item) => URL.revokeObjectURL(item.url));
     };
-  }, [previewUrl]);
+  }, [previewUrls]);
 
   const onPickFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] ?? null;
-    if (!file) return;
-    if (!allowedTypes.has(file.type)) return;
-    setSelectedFile(file);
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
+    const imageFiles = files.filter((file) => file.type.startsWith("image/"));
+    setSelectedFiles(imageFiles);
+  };
+
+  const onDragOver = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const onDragLeave = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const onDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const files = Array.from(e.dataTransfer.files ?? []);
+    if (files.length === 0) return;
+    const imageFiles = files.filter((file) => file.type.startsWith("image/"));
+    setSelectedFiles(imageFiles);
   };
 
   const onUpload = async () => {
-    if (!selectedFile) return;
-    await upload(selectedFile);
-    setSelectedFile(null);
+    if (selectedFiles.length === 0) return;
+    await uploadMany(selectedFiles);
+    setSelectedFiles([]);
   };
 
   return (
     <div className="space-y-6">
       <Card className="layer-1">
         <CardHeader>
-          <CardTitle>Upload Customer Logo</CardTitle>
+          <CardTitle>Upload Customer Logos</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div
+            onDragOver={onDragOver}
+            onDragLeave={onDragLeave}
+            onDrop={onDrop}
+            className={`layer-1 rounded-md border-2 border-dashed p-5 text-center text-sm transition-colors ${
+              isDragging
+                ? "border-primary bg-primary/5 text-primary"
+                : "border-border text-muted-foreground"
+            }`}
+          >
+            Drag and drop image files here
+          </div>
+
           <input
             type="file"
-            accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml"
+            accept="image/*"
+            multiple
             onChange={onPickFile}
             className="layer-1 w-full rounded-md px-3 py-2 text-sm"
           />
 
-          {previewUrl ? (
-            <div className="layer-2 flex items-center justify-center rounded-lg p-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={previewUrl}
-                alt="Selected logo preview"
-                className="max-h-24 max-w-full object-contain"
-              />
+          {previewUrls.length > 0 ? (
+            <div className="layer-2 grid grid-cols-2 gap-3 rounded-lg p-4 sm:grid-cols-3 lg:grid-cols-4">
+              {previewUrls.map((item) => (
+                <div key={`${item.name}-${item.url}`} className="layer-1 rounded-md p-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.url}
+                    alt={`Preview ${item.name}`}
+                    className="mx-auto h-16 w-full object-contain"
+                  />
+                </div>
+              ))}
             </div>
           ) : null}
 
           <Button
             type="button"
-            disabled={!selectedFile || isUploading}
+            disabled={selectedFiles.length === 0 || isUploading}
             onClick={onUpload}
             className="inline-flex items-center gap-2"
           >
             <Upload className="h-4 w-4" />
-            {isUploading ? "Uploading..." : "Upload Logo"}
+            {isUploading
+              ? "Uploading..."
+              : selectedFiles.length > 1
+                ? `Upload ${selectedFiles.length} Logos`
+                : "Upload Logo"}
           </Button>
         </CardContent>
       </Card>
