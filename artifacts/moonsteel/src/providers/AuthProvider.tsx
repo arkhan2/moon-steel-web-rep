@@ -57,16 +57,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     let mounted = true;
 
     const boot = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!mounted) return;
+      try {
+        const { data, error } = await supabase.auth.getSession();
+        if (!mounted) return;
 
-      const nextSession = data.session ?? null;
-      const nextUser = nextSession?.user ?? null;
+        if (error) {
+          setSession(null);
+          setUser(null);
+          setRole(null);
+          return;
+        }
 
-      setSession(nextSession);
-      setUser(nextUser);
-      await refreshProfileRole(nextUser?.id ?? null);
-      if (mounted) setIsLoading(false);
+        const nextSession = data.session ?? null;
+        const nextUser = nextSession?.user ?? null;
+
+        setSession(nextSession);
+        setUser(nextUser);
+        await refreshProfileRole(nextUser?.id ?? null);
+      } catch {
+        if (!mounted) return;
+        setSession(null);
+        setUser(null);
+        setRole(null);
+      } finally {
+        if (mounted) setIsLoading(false);
+      }
     };
 
     void boot();

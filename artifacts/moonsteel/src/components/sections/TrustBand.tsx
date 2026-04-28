@@ -52,7 +52,7 @@ export function TrustBand() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 border-b border-border/50 pb-16">
           <div className="flex flex-col items-center justify-start min-h-[88px] text-center">
-            <p className="text-5xl md:text-6xl font-display font-semibold text-foreground leading-none">15+</p>
+            <p className="text-5xl md:text-6xl font-display font-semibold text-foreground leading-none">50+</p>
             <p className="text-sm font-medium text-muted-foreground mt-3">Years Experience</p>
           </div>
           <div className="flex flex-col items-center justify-start min-h-[88px] text-center">
