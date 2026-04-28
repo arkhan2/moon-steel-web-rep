@@ -244,7 +244,7 @@
   }
 
   .clients-carousel-item {
-    @apply flex h-20 min-w-[140px] items-center justify-center rounded-xl border border-border/80 bg-layer-1 px-4 opacity-100 transition-all;
+    @apply flex-none flex h-20 w-[140px] items-center justify-center rounded-xl border border-border/80 bg-layer-1 px-4 opacity-100 transition-all;
   }
 
   @media (max-width: 640px) {
@@ -253,7 +253,7 @@
     }
 
     .clients-carousel-item {
-      @apply h-12 min-w-[72px] rounded-lg px-1.5;
+      @apply h-12 w-[80px] rounded-lg px-1.5;
     }
   }
 
