@@ -240,11 +240,17 @@
 
   .clients-carousel-track {
     @apply flex w-max items-center gap-6;
-    animation: clients-marquee 34s linear infinite;
+    animation: clients-marquee var(--clients-marquee-duration, 52s) linear infinite;
   }
 
   .clients-carousel-item {
     @apply flex h-20 min-w-[140px] items-center justify-center rounded-xl border border-border/80 bg-layer-1 px-4 opacity-100 transition-all;
+  }
+
+  .motion-reveal {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
 }

@@ -16,9 +16,10 @@ export function MaterialEducation() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -12 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
@@ -46,9 +47,10 @@ export function MaterialEducation() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 12 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
               className="layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">

@@ -1,7 +1,12 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import { fetchProductCategories } from "@/features/admin/services/productCategories";
+import type { ProductCategory } from "@/features/admin/types";
 
-const products = [
+const defaultProducts = [
   {
     name: "Work Tables & Prep Stations",
     specs: "SS 304 | 1.2mm/1.5mm Top | #4 Satin",
@@ -41,6 +46,30 @@ const products = [
 ];
 
 export function Products() {
+  const [products, setProducts] = useState(defaultProducts);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchProductCategories()
+      .then((rows) => {
+        if (!isMounted || rows.length === 0) return;
+        const mapped = rows.map((row: ProductCategory) => ({
+          name: row.title,
+          specs: row.specs,
+          desc: row.description,
+          uses: row.uses,
+        }));
+        setProducts(mapped);
+      })
+      .catch(() => {
+        // Keep default products when DB is not ready.
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <section id="products" className="layer-0 py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -57,17 +86,17 @@ export function Products() {
           {products.map((product, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group layer-1 p-6 rounded-xl hover:border-primary/40 transition-colors"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+              className="motion-reveal group layer-1 p-6 rounded-xl hover:border-primary/40 transition-colors"
             >
               <div className="mb-6 pb-6 border-b border-border">
                 <h3 className="text-xl font-display font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>
-                <div className="layer-2 text-xs font-mono text-muted-foreground inline-block px-2 py-1 rounded-md">
+                <div className="inline-block rounded-md border border-primary/25 bg-primary/10 px-2 py-1 text-xs font-mono text-primary">
                   {product.specs}
                 </div>
               </div>

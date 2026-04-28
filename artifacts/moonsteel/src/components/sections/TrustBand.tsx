@@ -1,15 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchCustomerLogos } from "@/features/admin/services/customerLogos";
+import { fetchCustomerLogos, fetchLogoSliderSpeed } from "@/features/admin/services/customerLogos";
 import type { CustomerLogo } from "@/features/admin/types";
-
-const clients = [
-  "Mövenpick", "Marriott", "Sheraton", "Serena", "Avari", "Pearl Continental",
-  "McDonald's", "KFC", "Pizza Hut", "Nando's", "Costa Coffee",
-  "AKUH", "Pfizer", "Novartis", "Searle", "Yamaha", "PSO", "Shell"
-];
 
 export function TrustBand() {
   const [logos, setLogos] = useState<CustomerLogo[]>([]);
+  const [sliderSpeed, setSliderSpeed] = useState(52);
 
   useEffect(() => {
     let isMounted = true;
@@ -19,6 +14,20 @@ export function TrustBand() {
       })
       .catch(() => {
         // Keep static fallback list when logos cannot be loaded.
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchLogoSliderSpeed()
+      .then((seconds) => {
+        if (isMounted) setSliderSpeed(seconds);
+      })
+      .catch(() => {
+        // Keep default when settings cannot be loaded.
       });
     return () => {
       isMounted = false;
@@ -77,7 +86,10 @@ export function TrustBand() {
 
         {hasLogos ? (
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="clients-carousel-track">
+            <div
+              className="clients-carousel-track"
+              style={{ "--clients-marquee-duration": `${sliderSpeed}s` } as React.CSSProperties}
+            >
               {marqueeLogos.map(({ logo, loopKey }) => (
                 <a
                   key={loopKey}
@@ -91,24 +103,13 @@ export function TrustBand() {
                   <img
                     src={logo.image_url}
                     alt="Customer logo"
-                    className="h-10 w-auto max-w-[140px] object-contain"
+                    className="h-full w-full object-contain p-2"
                   />
                 </a>
               ))}
             </div>
           </div>
-        ) : (
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-6 opacity-60 grayscale">
-            {clients.map((client) => (
-              <div
-                key={client}
-                className="text-lg md:text-xl font-display font-semibold text-muted-foreground"
-              >
-                {client}
-              </div>
-            ))}
-          </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

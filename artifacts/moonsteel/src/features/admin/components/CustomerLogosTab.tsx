@@ -3,6 +3,7 @@
 import { ChangeEvent, DragEvent, useEffect, useMemo, useState } from "react";
 import { Trash2, Upload } from "lucide-react";
 import { useCustomerLogos } from "@/features/admin/hooks/useCustomerLogos";
+import { fetchLogoSliderSpeed, saveLogoSliderSpeed } from "@/features/admin/services/customerLogos";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -10,6 +11,9 @@ export function CustomerLogosTab() {
   const { logos, isLoading, isUploading, error, uploadMany, remove } = useCustomerLogos();
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [sliderSpeed, setSliderSpeed] = useState(52);
+  const [isSavingSpeed, setIsSavingSpeed] = useState(false);
+  const [speedError, setSpeedError] = useState<string | null>(null);
 
   const previewUrls = useMemo(
     () =>
@@ -25,6 +29,14 @@ export function CustomerLogosTab() {
       previewUrls.forEach((item) => URL.revokeObjectURL(item.url));
     };
   }, [previewUrls]);
+
+  useEffect(() => {
+    fetchLogoSliderSpeed()
+      .then((seconds) => setSliderSpeed(seconds))
+      .catch(() => {
+        // Keep default speed when setting cannot be loaded.
+      });
+  }, []);
 
   const onPickFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
@@ -58,6 +70,19 @@ export function CustomerLogosTab() {
     setSelectedFiles([]);
   };
 
+  const onSaveSpeed = async () => {
+    setSpeedError(null);
+    setIsSavingSpeed(true);
+    try {
+      const saved = await saveLogoSliderSpeed(sliderSpeed);
+      setSliderSpeed(saved);
+    } catch (e) {
+      setSpeedError(e instanceof Error ? e.message : "Failed to save speed.");
+    } finally {
+      setIsSavingSpeed(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Card className="layer-1">
@@ -65,6 +90,28 @@ export function CustomerLogosTab() {
           <CardTitle>Upload Customer Logos</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="layer-2 rounded-lg p-4">
+            <div className="mb-2 flex items-center justify-between">
+              <p className="text-sm font-medium text-foreground">Logo Slider Speed</p>
+              <span className="text-xs text-muted-foreground">{sliderSpeed}s per loop</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <input
+                type="range"
+                min={12}
+                max={120}
+                step={1}
+                value={sliderSpeed}
+                onChange={(e) => setSliderSpeed(Number(e.target.value))}
+                className="w-full"
+              />
+              <Button type="button" size="sm" onClick={onSaveSpeed} disabled={isSavingSpeed}>
+                {isSavingSpeed ? "Saving..." : "Save"}
+              </Button>
+            </div>
+            {speedError ? <p className="mt-2 text-xs text-destructive">{speedError}</p> : null}
+          </div>
+
           <div
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}

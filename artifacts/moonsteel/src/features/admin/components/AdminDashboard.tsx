@@ -1,10 +1,13 @@
 "use client";
 
+import { useMemo } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { AdminTabKey } from "@/features/admin/types";
 import { CustomerLogosTab } from "@/features/admin/components/CustomerLogosTab";
 import { HeroImagesTab } from "@/features/admin/components/HeroImagesTab";
+import { ProductCategoriesTab } from "@/features/admin/components/ProductCategoriesTab";
 
 type TabConfig = {
   key: AdminTabKey;
@@ -19,6 +22,8 @@ const tabConfig: TabConfig[] = [
   { key: "projects", label: "Projects", placeholder: true },
   { key: "testimonials", label: "Testimonials", placeholder: true },
 ];
+const defaultTab: AdminTabKey = "customer-logos";
+const tabKeys = new Set<AdminTabKey>(tabConfig.map((t) => t.key));
 
 function PlaceholderTab({ title }: { title: string }) {
   return (
@@ -34,8 +39,25 @@ function PlaceholderTab({ title }: { title: string }) {
 }
 
 export function AdminDashboard() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const activeTab = useMemo<AdminTabKey>(() => {
+    const requested = searchParams.get("tab");
+    if (!requested) return defaultTab;
+    return tabKeys.has(requested as AdminTabKey) ? (requested as AdminTabKey) : defaultTab;
+  }, [searchParams]);
+
+  const onTabChange = (nextTab: string) => {
+    if (!tabKeys.has(nextTab as AdminTabKey)) return;
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", nextTab);
+    router.replace(`${pathname}?${params.toString()}`);
+  };
+
   return (
-    <Tabs defaultValue="customer-logos" className="w-full">
+    <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
       <TabsList className="mb-4 h-auto w-full justify-start gap-2 overflow-x-auto rounded-lg p-1">
         {tabConfig.map((tab) => (
           <TabsTrigger key={tab.key} value={tab.key} className="shrink-0">
@@ -50,6 +72,8 @@ export function AdminDashboard() {
             <CustomerLogosTab />
           ) : tab.key === "hero-images" ? (
             <HeroImagesTab />
+          ) : tab.key === "products" ? (
+            <ProductCategoriesTab />
           ) : (
             <PlaceholderTab title={tab.label} />
           )}

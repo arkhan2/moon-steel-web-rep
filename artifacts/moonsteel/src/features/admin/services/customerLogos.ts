@@ -2,6 +2,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { CustomerLogo } from "@/features/admin/types";
 
 const BUCKET = "customer-logos";
+const DEFAULT_LOGO_SLIDER_SPEED = 52;
 
 function normalizeFileName(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9._-]/g, "-");
@@ -62,4 +63,38 @@ export async function deleteCustomerLogo(logo: CustomerLogo) {
 
   const { error: dbError } = await supabase.from("customer_logos").delete().eq("id", logo.id);
   if (dbError) throw dbError;
+}
+
+export async function fetchLogoSliderSpeed() {
+  const supabase = createSupabaseBrowserClient();
+  const { data, error } = await supabase
+    .from("site_settings")
+    .select("value")
+    .eq("key", "logo_slider_speed")
+    .maybeSingle();
+
+  if (error || !data?.value) return DEFAULT_LOGO_SLIDER_SPEED;
+
+  const parsed = Number(data.value);
+  if (!Number.isFinite(parsed) || parsed < 12 || parsed > 120) {
+    return DEFAULT_LOGO_SLIDER_SPEED;
+  }
+  return parsed;
+}
+
+export async function saveLogoSliderSpeed(seconds: number) {
+  const supabase = createSupabaseBrowserClient();
+  const normalized = Math.min(120, Math.max(12, Math.round(seconds)));
+
+  const { error } = await supabase.from("site_settings").upsert(
+    {
+      key: "logo_slider_speed",
+      value: String(normalized),
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "key" }
+  );
+
+  if (error) throw error;
+  return normalized;
 }

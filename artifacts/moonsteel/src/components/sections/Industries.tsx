@@ -53,11 +53,11 @@ export function Industries() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="layer-1 flex items-start gap-4 p-6 rounded-xl hover:border-primary/40 hover:shadow-sm transition-colors"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                className="motion-reveal layer-1 flex items-start gap-4 p-6 rounded-xl hover:border-primary/40 hover:shadow-sm transition-colors"
               >
                 <div className="layer-2 layer-tint-primary w-12 h-12 rounded-lg flex items-center justify-center shrink-0">
                   <Icon className="w-6 h-6 text-primary" />

@@ -71,10 +71,10 @@ export function Comparison() {
             {comparisons.map((row, i) => (
               <motion.div
                 key={row.feature}
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 6 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.03 }}
                 className={`grid grid-cols-1 md:grid-cols-12 border-t first:border-t-0 border-border/70 ${
                   i % 2 === 0 ? "bg-layer-1" : "bg-layer-2/45"
                 }`}

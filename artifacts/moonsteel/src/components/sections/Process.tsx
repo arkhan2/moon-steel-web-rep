@@ -47,11 +47,11 @@ export function Process() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 }}
-                  className="flex flex-col items-center text-center group"
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                  className="motion-reveal flex flex-col items-center text-center group"
                 >
                   <div className="layer-1 w-20 h-20 rounded-full flex items-center justify-center mb-6 group-hover:border-primary group-hover:bg-primary/5 transition-all duration-300 relative shadow-sm">
                     <Icon className="w-8 h-8 text-foreground group-hover:text-primary transition-colors" />

@@ -145,7 +145,7 @@ export function Hero() {
               - < lg: use horizontal carousel (below), avoid cramped split layout
               - lg+: show vertical image rail with capped width/height
           */}
-          <div className="hidden lg:relative lg:z-20 lg:flex lg:h-[min(80vh,760px)] lg:w-full lg:self-stretch lg:flex-col lg:justify-self-end lg:overflow-hidden lg:rounded-xl lg:border lg:border-border/70 lg:bg-card lg:shadow-sm">
+          <div className="hidden lg:relative lg:z-20 lg:mt-auto lg:flex lg:h-[min(80vh,760px)] lg:w-full lg:self-end lg:flex-col lg:justify-self-end lg:overflow-hidden lg:rounded-xl lg:border lg:border-border/70 lg:bg-card lg:shadow-sm">
             {heroImages.map((stripe, i) => {
               const active = hoveredStripe === i;
               const hasHover = hoveredStripe !== null;

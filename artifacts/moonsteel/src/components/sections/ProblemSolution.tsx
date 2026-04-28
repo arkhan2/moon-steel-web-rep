@@ -17,9 +17,10 @@ export function ProblemSolution() {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {/* The Problem */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="apple-surface p-8"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
@@ -44,9 +45,10 @@ export function ProblemSolution() {
 
           {/* The Solution */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 12 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
             className="bg-primary/5 border border-primary/25 p-8 rounded-xl shadow-sm relative overflow-hidden"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-primary/20 relative z-10">
