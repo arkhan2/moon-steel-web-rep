@@ -103,7 +103,7 @@ export function TrustBand() {
                   <img
                     src={logo.image_url}
                     alt="Customer logo"
-                    className="h-full w-full object-contain p-2"
+                    className="h-full w-full object-contain p-1.5 sm:p-2"
                   />
                 </a>
               ))}

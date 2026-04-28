@@ -247,10 +247,34 @@
     @apply flex h-20 min-w-[140px] items-center justify-center rounded-xl border border-border/80 bg-layer-1 px-4 opacity-100 transition-all;
   }
 
+  @media (max-width: 640px) {
+    .clients-carousel-track {
+      @apply gap-3;
+    }
+
+    .clients-carousel-item {
+      @apply h-14 min-w-[92px] rounded-lg px-2;
+    }
+  }
+
   .motion-reveal {
     will-change: transform, opacity;
     backface-visibility: hidden;
     transform: translateZ(0);
+  }
+
+  /* iOS Safari can flicker transformed elements during scroll/reveal animations. */
+  @supports (-webkit-touch-callout: none) {
+    .motion-reveal {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-perspective: 1000;
+      perspective: 1000;
+      transform-style: preserve-3d;
+      contain: paint;
+    }
   }
 
 }

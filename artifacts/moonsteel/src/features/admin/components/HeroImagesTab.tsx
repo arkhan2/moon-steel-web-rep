@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import { Save, Trash2, Upload, X } from "lucide-react";
+import { Download, Save, Trash2, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -32,6 +32,7 @@ export function HeroImagesTab() {
     3: 0,
     4: 0,
   });
+  const [isDownloadingAll, setIsDownloadingAll] = useState(false);
 
   const previewUrls = useMemo(() => {
     const next: Record<number, string | null> = { 1: null, 2: null, 3: null, 4: null };
@@ -99,6 +100,74 @@ export function HeroImagesTab() {
     });
   };
 
+  const downloadImageForSlot = async (slot: number) => {
+    const existing = bySlot.get(slot);
+    if (!existing?.image_url) return false;
+    try {
+      const response = await fetch(existing.image_url);
+      if (!response.ok) throw new Error("Failed to fetch image.");
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const urlPath = new URL(existing.image_url).pathname;
+      const extension = urlPath.includes(".") ? urlPath.split(".").pop() : "jpg";
+      const fileName = `hero-image-slot-${slot}.${extension}`;
+
+      const link = document.createElement("a");
+      link.href = objectUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(objectUrl);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const onDownload = async (slot: number) => {
+    const ok = await downloadImageForSlot(slot);
+    if (ok) return;
+    toast({
+      title: "Download failed",
+      description: "Could not download this hero image. Please try again.",
+      variant: "destructive",
+    });
+  };
+
+  const onDownloadAll = async () => {
+    const availableSlots = slots.filter((slot) => Boolean(bySlot.get(slot)?.image_url));
+    if (availableSlots.length === 0) return;
+
+    setIsDownloadingAll(true);
+    let successCount = 0;
+
+    for (const slot of availableSlots) {
+      // Small delay helps browsers process sequential download prompts more reliably.
+      // eslint-disable-next-line no-await-in-loop
+      const ok = await downloadImageForSlot(slot);
+      if (ok) successCount += 1;
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+
+    setIsDownloadingAll(false);
+
+    if (successCount === availableSlots.length) {
+      toast({
+        title: "All hero images downloaded",
+        description: `${successCount} files were downloaded.`,
+      });
+      return;
+    }
+
+    toast({
+      title: "Some downloads failed",
+      description: `${successCount}/${availableSlots.length} files were downloaded.`,
+      variant: "destructive",
+    });
+  };
+
   return (
     <div className="space-y-6">
       <Card className="layer-1">
@@ -109,6 +178,17 @@ export function HeroImagesTab() {
           <p className="text-sm text-muted-foreground">
             Upload or replace each of the 4 hero images shown in the homepage image rail.
           </p>
+          <div className="mt-4">
+            <Button
+              type="button"
+              variant="outline"
+              disabled={isDownloadingAll || slots.every((slot) => !bySlot.get(slot)?.image_url)}
+              onClick={() => void onDownloadAll()}
+            >
+              <Download className="mr-2 h-4 w-4" />
+              {isDownloadingAll ? "Downloading..." : "Download All"}
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
@@ -165,6 +245,16 @@ export function HeroImagesTab() {
                   >
                     <Upload className="mr-2 h-4 w-4" />
                     {isSaving ? "Saving..." : existing ? "Replace" : "Upload"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={!existing}
+                    onClick={() => void onDownload(slot)}
+                    className="w-full"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download
                   </Button>
                   <Button
                     type="button"
