@@ -47,10 +47,10 @@ export function Process() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
                   className="motion-reveal flex flex-col items-center text-center group overflow-visible pt-2 md:pt-0"
                 >
                   <div className="layer-1 relative mb-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-visible rounded-full shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-primary/5">

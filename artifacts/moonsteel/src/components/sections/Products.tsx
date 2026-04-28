@@ -86,10 +86,10 @@ export function Products() {
           {products.map((product, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+              transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
               className="motion-reveal group layer-1 p-6 rounded-xl hover:border-primary/40 transition-colors"
             >
               <div className="mb-6 pb-6 border-b border-border">

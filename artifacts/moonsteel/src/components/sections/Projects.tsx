@@ -60,10 +60,10 @@ export function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+              transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
               className="motion-reveal group cursor-pointer"
             >
               <div className="layer-2 aspect-[4/3] overflow-hidden mb-4 relative rounded-xl">

@@ -261,6 +261,17 @@
     will-change: transform, opacity;
     backface-visibility: hidden;
     transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .motion-reveal {
+      transition: none !important;
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+      will-change: auto !important;
+    }
   }
 
   /* iOS Safari can flicker transformed elements during scroll/reveal animations. */
