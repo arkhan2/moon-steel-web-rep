@@ -16,9 +16,9 @@ export function MaterialEducation() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div 
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="motion-reveal layer-2 p-6 rounded-xl shadow-sm"
             >
@@ -47,9 +47,9 @@ export function MaterialEducation() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, x: 12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
               className="motion-reveal layer-2 p-6 rounded-xl shadow-sm"
             >

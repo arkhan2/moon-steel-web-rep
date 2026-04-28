@@ -17,9 +17,9 @@ export function ProblemSolution() {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {/* The Problem */}
           <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="motion-reveal apple-surface p-8"
           >
@@ -45,9 +45,9 @@ export function ProblemSolution() {
 
           {/* The Solution */}
           <motion.div
-            initial={{ opacity: 0, x: 12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
             className="motion-reveal bg-primary/5 border border-primary/25 p-8 rounded-xl shadow-sm relative overflow-hidden"
           >
