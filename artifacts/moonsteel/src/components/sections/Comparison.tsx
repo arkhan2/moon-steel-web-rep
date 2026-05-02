@@ -1,5 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 
 const comparisons = [
   {
@@ -35,6 +38,8 @@ const comparisons = [
 ];
 
 export function Comparison() {
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
+
   return (
     <section id="comparison" className="layer-0 py-24 text-foreground">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
@@ -68,15 +73,19 @@ export function Comparison() {
               </div>
             </div>
 
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={viewport}
+              variants={listContainerVariants}
+              className="flex flex-col"
+            >
             {comparisons.map((row, i) => (
               <motion.div
                 key={row.feature}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
+                variants={listItemVariants}
                 className={`motion-reveal grid grid-cols-1 md:grid-cols-12 border-t first:border-t-0 border-border/70 ${
-                  i % 2 === 0 ? "bg-layer-1" : "bg-layer-2/45"
+                  i % 2 === 0 ? "bg-layer-1" : "bg-layer-3"
                 }`}
               >
                 <div className="md:col-span-4 p-5">
@@ -107,6 +116,7 @@ export function Comparison() {
                 </div>
               </motion.div>
             ))}
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,5 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { MessageSquare, PenTool, Hammer, Truck } from "lucide-react";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 
 const steps = [
   {
@@ -25,6 +28,8 @@ const steps = [
 ];
 
 export function Process() {
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
+
   return (
     <section id="process" className="layer-0 py-24 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
@@ -41,16 +46,19 @@ export function Process() {
           {/* Desktop Connecting Line */}
           <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-border -translate-y-1/2" />
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative z-10">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative z-10"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+            variants={listContainerVariants}
+          >
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
+                  variants={listItemVariants}
                   className="motion-reveal flex flex-col items-center text-center group overflow-visible pt-2 md:pt-0"
                 >
                   <div className="layer-1 relative mb-6 flex h-20 w-20 shrink-0 items-center justify-center overflow-visible rounded-full shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-primary/5">
@@ -68,7 +76,7 @@ export function Process() {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

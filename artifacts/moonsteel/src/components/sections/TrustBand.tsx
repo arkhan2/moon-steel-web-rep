@@ -1,13 +1,26 @@
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import { fetchCustomerLogos, fetchLogoSliderSpeed } from "@/features/admin/services/customerLogos";
 import type { CustomerLogo } from "@/features/admin/types";
 
 const LOGOS_CACHE_KEY = "moonsteel:customer-logos";
 const LOGO_SPEED_CACHE_KEY = "moonsteel:logo-slider-speed";
 
+function preloadImage(url: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve();
+    img.src = url;
+  });
+}
+
 export function TrustBand() {
   const [logos, setLogos] = useState<CustomerLogo[]>([]);
   const [sliderSpeed, setSliderSpeed] = useState(52);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -75,13 +88,33 @@ export function TrustBand() {
     };
   }, []);
 
+  useEffect(() => {
+    if (logos.length === 0) {
+      setImagesLoaded(false);
+      return;
+    }
+
+    let cancelled = false;
+    setImagesLoaded(false);
+
+    const urls = [...new Set(logos.map((l) => l.image_url).filter(Boolean))];
+
+    Promise.all(urls.map(preloadImage)).then(() => {
+      if (!cancelled) setImagesLoaded(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [logos]);
+
   const hasLogos = logos.length > 0;
   const marqueeLogos = useMemo(() => {
     if (logos.length === 0) return [];
 
     // Build a sufficiently long base set so the marquee never exposes blanks,
     // even when only a few logos are uploaded.
-    const minItemsPerSet = 12;
+    const minItemsPerSet = 6;
     const repeatCount = Math.max(2, Math.ceil(minItemsPerSet / logos.length));
     const baseSet = Array.from({ length: repeatCount }).flatMap((_, repeatIdx) =>
       logos.map((logo) => ({
@@ -125,11 +158,15 @@ export function TrustBand() {
           </p>
         </div>
 
-        {hasLogos ? (
+        {hasLogos && imagesLoaded ? (
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div
               className="clients-carousel-track"
-              style={{ "--clients-marquee-duration": `${sliderSpeed}s` } as React.CSSProperties}
+              style={
+                {
+                  "--clients-marquee-duration": `${sliderSpeed}s`,
+                } as CSSProperties
+              }
             >
               {marqueeLogos.map(({ logo, loopKey }) => (
                 <a
@@ -137,19 +174,26 @@ export function TrustBand() {
                   href={logo.image_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="clients-carousel-item"
+                  className="clients-carousel-item flex items-center justify-center"
                   aria-label="View customer logo"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logo.image_url}
                     alt="Customer logo"
-                    className="h-full w-full object-contain p-1.5 sm:p-2"
+                    loading="eager"
+                    decoding="async"
+                    className="max-h-10 w-auto max-w-full object-contain sm:max-h-[44px]"
                   />
                 </a>
               ))}
             </div>
           </div>
+        ) : hasLogos ? (
+          <div
+            className="h-[60px] sm:h-20 w-full rounded-xl border border-border/50 bg-muted/30"
+            aria-hidden
+          />
         ) : null}
       </div>
     </section>

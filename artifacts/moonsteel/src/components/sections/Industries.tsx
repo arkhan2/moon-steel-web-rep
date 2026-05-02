@@ -1,5 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Factory, HeartPulse, Building2, Snowflake, Stethoscope, UtensilsCrossed } from "lucide-react";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 
 const industries = [
   {
@@ -35,6 +38,8 @@ const industries = [
 ];
 
 export function Industries() {
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
+
   return (
     <section className="layer-0 py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -47,16 +52,19 @@ export function Industries() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={listContainerVariants}
+        >
           {industries.map((industry, i) => {
             const Icon = industry.icon;
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
+                variants={listItemVariants}
                 className="motion-reveal layer-1 flex items-start gap-4 p-6 rounded-xl hover:border-primary/40 hover:shadow-sm transition-colors"
               >
                 <div className="layer-2 layer-tint-primary w-12 h-12 rounded-lg flex items-center justify-center shrink-0">
@@ -73,7 +81,7 @@ export function Industries() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

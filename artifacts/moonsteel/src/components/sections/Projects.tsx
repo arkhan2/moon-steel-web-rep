@@ -1,4 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 
 const projects = [
   {
@@ -44,6 +47,8 @@ const projects = [
 ];
 
 export function Projects() {
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
+
   return (
     <section id="projects" className="layer-1 py-24 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
@@ -56,14 +61,17 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={listContainerVariants}
+        >
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
+              variants={listItemVariants}
               className="motion-reveal group cursor-pointer"
             >
               <div className="layer-2 aspect-[4/3] overflow-hidden mb-4 relative rounded-xl">
@@ -83,7 +91,7 @@ export function Projects() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 import { ChevronRight } from "lucide-react";
 import { fetchProductCategories } from "@/features/admin/services/productCategories";
 import type { ProductCategory } from "@/features/admin/types";
@@ -47,6 +48,7 @@ const defaultProducts = [
 
 export function Products() {
   const [products, setProducts] = useState(defaultProducts);
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
 
   useEffect(() => {
     let isMounted = true;
@@ -82,14 +84,17 @@ export function Products() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={listContainerVariants}
+        >
           {products.map((product, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(i, 5) * 0.06 }}
+              variants={listItemVariants}
               className="motion-reveal group layer-1 p-6 rounded-xl hover:border-primary/40 transition-colors"
             >
               <div className="mb-6 pb-6 border-b border-border">
@@ -111,7 +116,7 @@ export function Products() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

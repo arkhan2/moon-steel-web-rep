@@ -1,6 +1,11 @@
+"use client";
+
 import { motion } from "framer-motion";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 
 export function MaterialEducation() {
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
+
   return (
     <section className="layer-1 py-20 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
@@ -14,12 +19,15 @@ export function MaterialEducation() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
+          <motion.div
+            className="grid md:grid-cols-2 gap-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+            variants={listContainerVariants}
+          >
+            <motion.div
+              variants={listItemVariants}
               className="motion-reveal layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
@@ -46,11 +54,8 @@ export function MaterialEducation() {
               </ul>
             </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, ease: "easeOut", delay: 0.06 }}
+            <motion.div
+              variants={listItemVariants}
               className="motion-reveal layer-2 p-6 rounded-xl shadow-sm"
             >
               <h3 className="font-display font-semibold text-lg mb-4 flex items-center gap-2">
@@ -76,7 +81,7 @@ export function MaterialEducation() {
                 </li>
               </ul>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

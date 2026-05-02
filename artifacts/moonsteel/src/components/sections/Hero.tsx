@@ -82,16 +82,22 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-background pt-20 md:pt-24">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="grid min-h-[calc(86vh-5rem)] grid-cols-1 items-center gap-8 md:min-h-[calc(82vh-6rem)] lg:min-h-[calc(90vh-6rem)] lg:grid-cols-2 lg:gap-10">
-          <div className="relative flex items-center self-center">
+        <div
+          className={
+            "grid min-h-[calc(86vh-5rem)] grid-cols-1 content-start gap-y-10 gap-x-10 md:min-h-[calc(82vh-6rem)] " +
+            "lg:min-h-[calc(90vh-6rem)] lg:grid-cols-2 lg:content-stretch lg:items-center lg:gap-x-12 lg:gap-y-0"
+          }
+        >
+          {/* Copy: same horizontal measure as imagery (max-w-xl), centered on small screens, flush left in first column on lg */}
+          <div className="relative flex w-full justify-center lg:justify-start">
             <div
-              className="pointer-events-none absolute inset-0 -z-10"
+              className="pointer-events-none absolute inset-0 -z-10 hidden lg:block"
               style={{
                 background:
                   "linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 35%, rgba(255,255,255,0.25) 70%, rgba(255,255,255,0) 100%)",
               }}
             />
-            <div className="max-w-xl">
+            <div className="relative z-10 w-full max-w-xl">
               <div className="mb-6 flex items-center gap-4">
                 <div className="h-px w-12 bg-primary" />
                 <span className="apple-eyebrow text-primary">Engineering Grade Fabrication</span>
@@ -102,7 +108,7 @@ export function Hero() {
                 For Kitchens That <span className="text-primary">Actually Last.</span>
               </h1>
 
-              <p className="apple-section-copy mb-10 max-w-2xl">
+              <p className="apple-section-copy mb-10 max-w-xl">
                 Certified SS 304. Accurate gauges. Flawless Laser Welding. We build commercial kitchen
                 equipment, hospital sterile prep stations, and industrial solutions designed to endure 15+
                 years of severe use. No compromises.
@@ -141,11 +147,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Squeeze rules:
-              - < lg: use horizontal carousel (below), avoid cramped split layout
-              - lg+: show vertical image rail with capped width/height
-          */}
-          <div className="hidden lg:relative lg:z-20 lg:mt-auto lg:flex lg:h-[min(80vh,760px)] lg:w-full lg:self-end lg:flex-col lg:justify-self-end lg:overflow-hidden lg:rounded-xl lg:border lg:border-border/70 lg:bg-card lg:shadow-sm">
+          {/* Desktop: vertical rail — vertically centered with copy, same max-w-xl as text */}
+          <div className="relative z-20 hidden min-h-0 w-full lg:flex lg:items-center lg:justify-end">
+            <div className="flex h-[min(80vh,760px)] w-full max-w-xl flex-col overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm">
             {heroImages.map((stripe, i) => {
               const active = hoveredStripe === i;
               const hasHover = hoveredStripe !== null;
@@ -188,10 +192,13 @@ export function Hero() {
                 </div>
               );
             })}
+            </div>
           </div>
 
-          <div className="lg:hidden">
-            <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:gap-4">
+          {/* Mobile / tablet: carousel shares max-w-xl + horizontal alignment with copy */}
+          <div className="flex w-full justify-center lg:hidden">
+            <div className="w-full max-w-xl">
+            <div className="-mx-1 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 px-1 sm:mx-0 sm:px-0 md:gap-4">
               {heroImages.map((stripe, index) => (
                 <article
                   key={`hero-mobile-slot-${index + 1}`}
@@ -218,6 +225,7 @@ export function Hero() {
                   )}
                 </article>
               ))}
+            </div>
             </div>
           </div>
         </div>

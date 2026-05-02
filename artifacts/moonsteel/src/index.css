@@ -218,6 +218,12 @@
     border-color: hsl(var(--foreground) / 0.09);
   }
 
+  /* Solid fill — no alpha on the surface (avoids repaint + animated opacity conflicts). */
+  .surface-primary-callout {
+    background-color: color-mix(in srgb, hsl(var(--primary)) 7%, hsl(var(--layer-1)));
+    border: 1px solid hsl(var(--primary) / 0.22);
+  }
+
   .section-title-accent {
     @apply text-foreground;
   }

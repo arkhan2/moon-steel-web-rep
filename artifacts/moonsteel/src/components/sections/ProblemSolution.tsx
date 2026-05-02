@@ -1,7 +1,12 @@
+"use client";
+
 import { CheckCircle2, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { useMotionReveal } from "@/hooks/use-motion-reveal";
 
 export function ProblemSolution() {
+  const { viewport, listContainerVariants, listItemVariants } = useMotionReveal();
+
   return (
     <section className="py-24 bg-muted text-foreground relative overflow-hidden">
       <div className="container relative z-10 mx-auto px-4 md:px-6">
@@ -14,13 +19,16 @@ export function ProblemSolution() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto"
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          variants={listContainerVariants}
+        >
           {/* The Problem */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
+            variants={listItemVariants}
             className="motion-reveal apple-surface p-8"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border">
@@ -45,11 +53,8 @@ export function ProblemSolution() {
 
           {/* The Solution */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, ease: "easeOut", delay: 0.06 }}
-            className="motion-reveal bg-primary/5 border border-primary/25 p-8 rounded-xl shadow-sm relative overflow-hidden"
+            variants={listItemVariants}
+            className="motion-reveal surface-primary-callout p-8 rounded-xl shadow-sm relative overflow-hidden"
           >
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-primary/20 relative z-10">
               <CheckCircle2 className="w-8 h-8 text-primary" />
@@ -70,7 +75,7 @@ export function ProblemSolution() {
               ))}
             </ul>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
